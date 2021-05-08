@@ -11,13 +11,14 @@ export const PublicRoutes = {
 
 }
 
-export const AdminDashboardRoutes = {
+export const AdminRoutes = {
+    INTRODUCTION: `${PublicRoutes.ADMIN_DASHBOARD}`,
     MOVIE_MANAGEMENT: `${PublicRoutes.ADMIN_DASHBOARD}/movie-management`,
     THEATER_MANAGEMENT: `${PublicRoutes.ADMIN_DASHBOARD}/theater-management`,
     SHOWTIME_MANAGEMENT: `${PublicRoutes.ADMIN_DASHBOARD}/showtime-management`,
 }
 
-export const UserDashboardRoutes = {
+export const UserRoutes = {
     ABOUT_ME: `${PublicRoutes.USER_DASHBOARD}/about-me`,
     MY_ACTIVITY: `${PublicRoutes.USER_DASHBOARD}/my-activity`,
     MY_SETTINGS: `${PublicRoutes.USER_DASHBOARD}/my-activity`,

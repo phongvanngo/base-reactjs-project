@@ -51,6 +51,5 @@ export default function AppRoutes() {
                 </Switch>
             </Router>
         </Suspense>
-
     )
 }

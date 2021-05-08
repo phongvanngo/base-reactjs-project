@@ -1,10 +1,9 @@
 import React from 'react'
 
-
-export default function ShowTimeManagement() {
+export default function TheaterManagement() {
     return (
         <div>
-            showtime
+            theater
         </div>
     )
 }
