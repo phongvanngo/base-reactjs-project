@@ -13,15 +13,9 @@ export default function LandingPage() {
     }
     return (
         <Router>
-            <Navbar />
-            <Dropdown />
-            <div>
-                <div>
-                    <button onClick={() => { handleLogout() }}>logout</button>
-                </div>
-            </div>
-            <div>
-                <AdminDashboardRoutes />
+            <div className="grid gap-5 grid-cols-12">
+                <aside className="col-span-2">left</aside>
+                <div className="col-span-10">right </div>
             </div>
         </Router>
     )
