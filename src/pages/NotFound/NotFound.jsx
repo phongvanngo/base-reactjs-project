@@ -1,10 +1,9 @@
 import React from 'react'
 
-
-export default function AdminDashboard() {
+export default function NotFound() {
     return (
         <div>
-            Admin Dashboard
+            not found
         </div>
     )
 }

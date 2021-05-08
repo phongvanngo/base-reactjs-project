@@ -1,10 +1,9 @@
 import React from 'react'
 
-
-export default function AdminDashboard() {
+export default function Cart() {
     return (
         <div>
-            Admin Dashboard
+
         </div>
     )
 }

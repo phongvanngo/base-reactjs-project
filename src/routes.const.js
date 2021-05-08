@@ -1,6 +1,6 @@
 export const PublicRoutes = {
     LANDINGPAGE: "/",
-    HOMPAGE: "/home",
+    HOMEPAGE: "/home",
     CONTACT: "/contact",
     ABOUT: "/about",
 
