@@ -1,15 +1,10 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
-import { Link, BrowserRouter as Router } from 'react-router-dom'
-import { AdminRoutes } from 'routes.const'
-import AdminDashboardRoutes from './AdminDashboard.routes'
 import { adminLogOut } from 'app/redux/adminAuthSlice';
-
-const {
-    MOVIE_MANAGEMENT,
-    SHOWTIME_MANAGEMENT,
-    THEATER_MANAGEMENT,
-} = AdminRoutes;
+import Dropdown from 'pages/LandingPage/Dropdown';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AdminDashboardRoutes from './AdminDashboard.routes';
+import Navbar from './Navbar';
 
 export default function LandingPage() {
     const dispatch = useDispatch();
@@ -18,18 +13,9 @@ export default function LandingPage() {
     }
     return (
         <Router>
-            <div style={{ background: "gainsboro", marginTop: "0px" }}>
-                <ul style={{ marginTop: '0px' }}>
-                    <li>
-                        <Link to={THEATER_MANAGEMENT}>THEATER MANAGEMENT</Link>
-                    </li>
-                    <li>
-                        <Link to={MOVIE_MANAGEMENT}>MOVIE MANAGEMENT</Link>
-                    </li>
-                    <li>
-                        <Link to={SHOWTIME_MANAGEMENT}>SHOW TIME MANAGEMENT</Link>
-                    </li>
-                </ul>
+            <Navbar />
+            <Dropdown />
+            <div>
                 <div>
                     <button onClick={() => { handleLogout() }}>logout</button>
                 </div>

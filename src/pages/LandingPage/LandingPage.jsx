@@ -1,28 +1,15 @@
 import React from 'react'
-import { Link, BrowserRouter as Router } from 'react-router-dom'
-import { PublicRoutes } from 'routes.const'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Dropdown from './Dropdown'
 import LandingPageRoutes from './LandingPage.routes'
+import Navbar from './Navbar'
 
-const {
-    CONTACT,
-    ABOUT,
-} = PublicRoutes;
 
 export default function LandingPage() {
     return (
         <Router>
-
-            <div>
-                <ul>
-                    <li>
-                        <Link to={CONTACT}>CONTACT</Link>
-                    </li>
-                    <li>
-                        <Link to={ABOUT}>ABOUT</Link>
-                    </li>
-
-                </ul>
-            </div>
+            <Navbar />
+            <Dropdown />
             <div>
                 <LandingPageRoutes />
             </div>
