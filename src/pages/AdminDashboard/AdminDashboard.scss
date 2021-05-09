@@ -1,0 +1,27 @@
+$width-full-sidebar:240px;
+$width-collapse-sidebar:30px;
+
+
+.admin-dashboard-container {
+    display:flex;
+    .admin-sidebar {
+        width: $width-collapse-sidebar;
+        transition: 0.5s;
+        min-height: 100vh;
+        height:100%;
+        background-color: gainsboro;
+    }
+    .admin-main {
+        transition: 0.5s;
+        width: 100%;
+        min-height: 100vh;
+        height:100%;
+        background-color: pink;
+    }
+    &.show-sidebar {
+        .admin-sidebar {
+            width: $width-full-sidebar;
+        }
+    }
+}
+
