@@ -1,5 +1,5 @@
 $width-full-sidebar:240px;
-$width-collapse-sidebar:70px;
+$width-collapse-sidebar:50px;
 
 #admin-dashboard-container {
     #admin-sidebar {
@@ -9,6 +9,23 @@ $width-collapse-sidebar:70px;
         height:100%;
         .menu-list {
             min-width: $width-full-sidebar;
+        }
+
+        .sidebar__link {
+            &:hover {
+                .sidebar__link__icon {
+                    color:rgb(182, 115, 230);
+                }
+                .sidebar__link__title {
+                    color: rgb(182, 115, 230);
+                }
+            }
+            &.active {
+                border-left: 4px solid black;
+                h4 {
+                    font-weight: bold;
+                }
+            }
         }
     }
     #admin-main {

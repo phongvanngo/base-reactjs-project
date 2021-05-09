@@ -14,7 +14,7 @@ const {
     INTRODUCTION
 } = AdminRoutes;
 
-export default function LandingPageRoutes() {
+export default function AdminDashboardRoutes() {
     return (
         <Switch>
             <Route path={INTRODUCTION} component={AdminIntroduction} exact={true} />
