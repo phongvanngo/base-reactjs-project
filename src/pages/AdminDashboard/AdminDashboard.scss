@@ -1,26 +1,29 @@
 $width-full-sidebar:240px;
-$width-collapse-sidebar:30px;
+$width-collapse-sidebar:70px;
 
-
-.admin-dashboard-container {
-    display:flex;
-    .admin-sidebar {
+#admin-dashboard-container {
+    #admin-sidebar {
         width: $width-collapse-sidebar;
         transition: 0.5s;
         min-height: 100vh;
         height:100%;
-        background-color: gainsboro;
+        .menu-list {
+            min-width: $width-full-sidebar;
+        }
     }
-    .admin-main {
+    #admin-main {
         transition: 0.5s;
-        width: 100%;
+        width:100%;
+        padding-left:$width-collapse-sidebar;
         min-height: 100vh;
         height:100%;
-        background-color: pink;
     }
     &.show-sidebar {
-        .admin-sidebar {
+        #admin-sidebar {
             width: $width-full-sidebar;
+        }
+        #admin-main{
+            padding-left: $width-full-sidebar;
         }
     }
 }
