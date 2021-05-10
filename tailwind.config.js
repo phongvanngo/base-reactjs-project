@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary_admin: '#e20e02',
+        admin_color_1: 'var(--admin-color-1)',
+        admin_color_2: 'var(--admin-color-2)'
       },
     },
   },

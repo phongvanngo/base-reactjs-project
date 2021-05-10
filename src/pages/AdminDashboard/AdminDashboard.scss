@@ -1,64 +1,99 @@
-$width-full-sidebar:240px;
-$width-collapse-sidebar:50px;
+$width-full-sidebar: 300px;
+$width-collapse-sidebar: 70px;
 
-$primary-color:#e20e02;
+$height-navbar: 85px;
+
+$primary-color: var(--admin-color-1);
 
 #admin-dashboard-container {
-    #admin-sidebar {
-        width: $width-collapse-sidebar;
-        transition: 0.5s;
-        min-height: 100vh;
-        height:100%;
-        .menu-list {
-            min-width: $width-full-sidebar;
-            .website-brand {
-                color:$primary-color;
-            }
-        }
+  #admin-sidebar {
+    background: var(--admin-color-1);
+    width: $width-collapse-sidebar;
+    transition: 0.5s;
 
-        .sidebar__link {
-            .sidebar__link__icon {
-                color:ivory;
-            }
-            .sidebar__link__title {
-                color: ivory;
-            }
-            &:hover {
-                .sidebar__link__icon {
-                    color:$primary-color;
-                }
-                .sidebar__link__title {
-                    color:$primary-color;
-                }
-            }
-            &.active {
-                border-left: 4px solid $primary-color;
-                .sidebar__link__icon {
-                    color:$primary-color;
-                }
-                .sidebar__link__title {
-                    color:$primary-color;
-                }
-            }
+    min-height: 100vh;
+    height: 100%;
+
+    position: fixed;
+    overflow: hidden;
+    padding-bottom: 10px;
+    padding-left: 0px;
+
+    #admin-sidebar__header {
+      height: $height-navbar;
+      width: $width-collapse-sidebar;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      position: fixed;
+      left: auto;
+      transition: all 2s;
+      .brand {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        h1 {
+          display: none;
         }
+      }
+    }
+    .menu-list {
+      min-width: $width-full-sidebar;
+      .website-brand {
+        color: $primary-color;
+      }
+    }
+
+    .sidebar__link {
+      .sidebar__link__icon {
+        color: ivory;
+      }
+      .sidebar__link__title {
+        color: ivory;
+      }
+      &:hover {
+        .sidebar__link__icon {
+          color: $primary-color;
+        }
+        .sidebar__link__title {
+          color: $primary-color;
+        }
+      }
+      &.active {
+        border-left: 4px solid $primary-color;
+        .sidebar__link__icon {
+          color: $primary-color;
+        }
+        .sidebar__link__title {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+  &.show-sidebar {
+    #admin-sidebar {
+      width: $width-full-sidebar;
+      #admin-sidebar__header {
+        width: $width-full-sidebar;
+        .brand {
+          h1 {
+            display: block;
+          }
+        }
+      }
     }
     #admin-main {
-        transition: 0.5s;
-        width:100%;
-        padding-left:$width-collapse-sidebar;
-        min-height: 100vh;
-        height:100%;
-        .navbar {
-            background-color: black;
-        }
+      padding-left: $width-full-sidebar;
     }
-    &.show-sidebar {
-        #admin-sidebar {
-            width: $width-full-sidebar;
-        }
-        #admin-main{
-            padding-left: $width-full-sidebar;
-        }
+  }
+  #admin-main {
+    transition: 0.5s;
+    width: 100%;
+    padding-left: $width-collapse-sidebar;
+    min-height: 100vh;
+    height: 100%;
+    #admin__navbar {
+      height: $height-navbar;
+      border-bottom: 1px solid #eee;
     }
+  }
 }
-
