@@ -64,7 +64,7 @@ export default function LandingPage() {
                     to={MOVIE_MANAGEMENT}
                   >
                     <span>
-                      <i class="bx bxs-home"></i>
+                      <i className="bx bxs-home"></i>
                     </span>
                     <h4 className="font-medium  ml-5 sidebar__link__title">
                       Movie{" "}

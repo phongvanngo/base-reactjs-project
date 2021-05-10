@@ -39,20 +39,24 @@ $primary-color: var(--admin-color-1);
     .menu-container {
       position: fixed;
       top: $height-navbar;
-      height: calc(100% - $height-navbar);
       width: $width-collapse-sidebar;
-      padding-top: 20px;
+      height: calc(100% - 85px);
       .menu-list {
+        position: relative;
+        height: 100%;
         display: "flex";
         flex-direction: columns;
+        padding: 5px 10px 5px 10px;
+        overflow-y: scroll;
         .menu-item {
-          padding: 5px 10px 5px 10px;
           cursor: pointer;
+          border-radius: 17px;
+          margin-bottom: 10px;
+          transition: all 0.5s;
           .menu-item__title {
             position: relative;
             color: rgba(255, 255, 255, 0.7);
             padding: 15px 15px;
-            border-radius: 17px;
 
             display: grid;
             grid-template-columns: 25px max-content 1fr;
@@ -89,13 +93,13 @@ $primary-color: var(--admin-color-1);
           }
 
           &:hover {
+            background-color: #554abe;
             .menu-item__title {
-              background-color: #554abe;
             }
           }
           &.active {
+            background-color: #554abe;
             .menu-item__title {
-              background-color: #554abe;
               &__submenu-icon {
                 transform: none;
               }
@@ -106,6 +110,18 @@ $primary-color: var(--admin-color-1);
             }
           }
         }
+      }
+
+      .menu-list::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 1);
+        background-color: var(--admin-color-1);
+      }
+      .menu-list::-webkit-scrollbar {
+        width: 5px;
+        background-color: #f5f5f5;
+      }
+      .menu-list::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.76);
       }
     }
   }

@@ -70,46 +70,130 @@ export default function LandingPage() {
             </div>
           </header>
           <div className="menu-container">
-            <div className="">
-              <ul className="menu-list">
-                <li className="menu-item">
-                  <div className="menu-item__title">
-                    <i className="bx bxs-home menu-item__title__icon"></i>
-                    <span className="menu-item__title__name">Dashboard</span>
-                    <i class="bx bx-chevron-down menu-item__title__submenu-icon"></i>
-                  </div>
-                  <ul className="submenu-list">
-                    <li>Home 1</li>
-                    <li>Home 2</li>
-                    <li>Home 3</li>
-                  </ul>
-                </li>
-                <li className="menu-item">
-                  <div className="menu-item__title">
-                    <i className="bx bxs-home menu-item__title__icon"></i>
-                    <span className="menu-item__title__name">Dashboard</span>
-                  </div>
-                </li>
-                <li className="menu-item">
-                  <div className="menu-item__title">
-                    <i className="bx bxs-home menu-item__title__icon"></i>
-                    <span className="menu-item__title__name">Dashboard</span>
-                    <i class="bx bx-chevron-down menu-item__title__submenu-icon"></i>
-                  </div>
-                  <ul className="submenu-list">
-                    <li>Home 1</li>
-                    <li>Home 2</li>
-                    <li>Home 3</li>
-                  </ul>
-                </li>
-                <li className="menu-item">
-                  <div className="menu-item__title">
-                    <i className="bx bxs-home menu-item__title__icon"></i>
-                    <span className="menu-item__title__name">Dashboard</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <ul className="menu-list">
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                  <i className="bx bx-chevron-down menu-item__title__submenu-icon"></i>
+                </div>
+                <ul className="submenu-list">
+                  <li>Home 1</li>
+                  <li>Home 2</li>
+                  <li>Home 3</li>
+                </ul>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                </div>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                  <i className="bx bx-chevron-down menu-item__title__submenu-icon"></i>
+                </div>
+                <ul className="submenu-list">
+                  <li>Home 1</li>
+                  <li>Home 2</li>
+                  <li>Home 3</li>
+                </ul>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                  <i className="bx bx-chevron-down menu-item__title__submenu-icon"></i>
+                </div>
+                <ul className="submenu-list">
+                  <li>Home 1</li>
+                  <li>Home 2</li>
+                  <li>Home 3</li>
+                </ul>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                  <i className="bx bx-chevron-down menu-item__title__submenu-icon"></i>
+                </div>
+                <ul className="submenu-list">
+                  <li>Home 1</li>
+                  <li>Home 2</li>
+                  <li>Home 3</li>
+                </ul>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                  <i className="bx bx-chevron-down menu-item__title__submenu-icon"></i>
+                </div>
+                <ul className="submenu-list">
+                  <li>Home 1</li>
+                  <li>Home 2</li>
+                  <li>Home 3</li>
+                </ul>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                  <i className="bx bx-chevron-down menu-item__title__submenu-icon"></i>
+                </div>
+                <ul className="submenu-list">
+                  <li>Home 1</li>
+                  <li>Home 2</li>
+                  <li>Home 3</li>
+                </ul>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">
+                    Dashboar sfsefed
+                  </span>
+                  <i className="bx bx-chevron-down menu-item__title__submenu-icon"></i>
+                </div>
+                <ul className="submenu-list">
+                  <li>Home 1</li>
+                  <li>Home 2</li>
+                  <li>Home 3</li>
+                </ul>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                </div>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                </div>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                </div>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                </div>
+              </li>
+              <li className="menu-item">
+                <div className="menu-item__title">
+                  <i className="bx bxs-home menu-item__title__icon"></i>
+                  <span className="menu-item__title__name">Dashboard</span>
+                </div>
+              </li>
+            </ul>
           </div>
         </aside>
         <div id="admin-main">
