@@ -36,35 +36,65 @@ $primary-color: var(--admin-color-1);
         }
       }
     }
-    .menu-list {
-      min-width: $width-full-sidebar;
-      .website-brand {
-        color: $primary-color;
-      }
-    }
+    .menu-container {
+      position: fixed;
+      top: $height-navbar;
+      height: calc(100% - $height-navbar);
+      width: $width-collapse-sidebar;
+      padding-top: 20px;
+      .menu-list {
+        display: "flex";
+        flex-direction: columns;
+        .menu-item {
+          padding: 5px 10px 5px 10px;
+          cursor: pointer;
+          .title {
+            position: relative;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 15px 15px;
+            border-radius: 17px;
 
-    .sidebar__link {
-      .sidebar__link__icon {
-        color: ivory;
-      }
-      .sidebar__link__title {
-        color: ivory;
-      }
-      &:hover {
-        .sidebar__link__icon {
-          color: $primary-color;
-        }
-        .sidebar__link__title {
-          color: $primary-color;
-        }
-      }
-      &.active {
-        border-left: 4px solid $primary-color;
-        .sidebar__link__icon {
-          color: $primary-color;
-        }
-        .sidebar__link__title {
-          color: $primary-color;
+            display: grid;
+            grid-template-columns: 25px max-content 1fr;
+            column-gap: 15px;
+            align-items: center;
+
+            &__icon {
+              font-size: 30px;
+            }
+            &__name {
+              font-size: 18px;
+              font-weight: 500;
+            }
+            &__submenu-icon {
+              font-size: 25px;
+              justify-self: flex-end;
+              transform: rotate(-90deg);
+            }
+          }
+
+          .submenu-list {
+            color: white;
+            display: none;
+            flex-direction: column;
+            li {
+              padding: 8px 55px;
+              font-size: 16px;
+              font-weight: 400;
+            }
+          }
+
+          &.active {
+            .title {
+              background-color: #554abe;
+              &__submenu-icon {
+                transform: none;
+              }
+            }
+            .submenu-list {
+              display: flex;
+            }
+          }
         }
       }
     }
@@ -79,6 +109,9 @@ $primary-color: var(--admin-color-1);
             display: block;
           }
         }
+      }
+      .menu-container {
+        width: $width-full-sidebar;
       }
     }
     #admin-main {

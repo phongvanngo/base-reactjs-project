@@ -65,6 +65,24 @@ export default function LandingPage() {
               <h1 className="font-extrabold text-2xl ml-3">Kshark Cinema</h1>
             </div>
           </header>
+          <div className="menu-container">
+            <div className="">
+              <ul className="menu-list">
+                <li className="menu-item active">
+                  <div className="title">
+                    <i className="bx bxs-home title__icon"></i>
+                    <span className="title__name">Dashboard</span>
+                    <i class="bx bx-chevron-down title__submenu-icon"></i>
+                  </div>
+                  <ul className="submenu-list">
+                    <li>Home 1</li>
+                    <li>Home 2</li>
+                    <li>Home 3</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
         </aside>
         <div id="admin-main">
           <header id="admin__navbar" className="px-3 flex items-center ">
