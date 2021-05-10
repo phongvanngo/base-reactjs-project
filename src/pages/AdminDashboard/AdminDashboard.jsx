@@ -40,7 +40,7 @@ export default function LandingPage() {
                 <aside id="admin-sidebar" className="overflow-hidden fixed pb-7 px-0 bg-black ">
                     <div className="overflow-hidden px-0 space-y-2 h-full flex flex-col justify-between">
                         <div className="menu-list">
-                            <section className="flex items-center py-2 px-2 website-brand">
+                            <section className="flex items-center py-4 px-2 website-brand">
                                 <div className="text-4xl">
                                     <i className='bx bx-certification' ></i>
                                 </div>
@@ -136,8 +136,8 @@ export default function LandingPage() {
 
                 </aside>
                 <div id="admin-main">
-                    <header className="px-3 flex items-center h-12 border-b">
-                        <button className="text-2xl focus:outline-none" onClick={() => { handleToggleSidebar() }}>
+                    <header className="navbar px-3 flex items-center h-16 border-b">
+                        <button className="text-2xl focus:outline-none text-primary_admin" onClick={() => { handleToggleSidebar() }}>
                             <i className='bx bx-menu bx-x' id="header-toggle"></i>
                         </button>
                     </header>

@@ -48,6 +48,9 @@ $primary-color:#e20e02;
         padding-left:$width-collapse-sidebar;
         min-height: 100vh;
         height:100%;
+        .navbar {
+            background-color: black;
+        }
     }
     &.show-sidebar {
         #admin-sidebar {
