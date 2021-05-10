@@ -48,7 +48,7 @@ $primary-color: var(--admin-color-1);
         .menu-item {
           padding: 5px 10px 5px 10px;
           cursor: pointer;
-          .title {
+          .menu-item__title {
             position: relative;
             color: rgba(255, 255, 255, 0.7);
             padding: 15px 15px;
@@ -70,6 +70,7 @@ $primary-color: var(--admin-color-1);
               font-size: 25px;
               justify-self: flex-end;
               transform: rotate(-90deg);
+              transition: 0.5s;
             }
           }
 
@@ -77,6 +78,9 @@ $primary-color: var(--admin-color-1);
             color: white;
             display: none;
             flex-direction: column;
+
+            transition: all ease-in-out 2s;
+
             li {
               padding: 8px 55px;
               font-size: 16px;
@@ -84,8 +88,13 @@ $primary-color: var(--admin-color-1);
             }
           }
 
+          &:hover {
+            .menu-item__title {
+              background-color: #554abe;
+            }
+          }
           &.active {
-            .title {
+            .menu-item__title {
               background-color: #554abe;
               &__submenu-icon {
                 transform: none;
@@ -93,6 +102,7 @@ $primary-color: var(--admin-color-1);
             }
             .submenu-list {
               display: flex;
+              transition: all ease-in-out 2s;
             }
           }
         }
