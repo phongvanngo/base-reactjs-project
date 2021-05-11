@@ -33,11 +33,11 @@ export default function LandingPage() {
     const adminLayout = document.getElementById("admin-dashboard-container");
     const headerToggle = document.getElementById("header-toggle-icon");
 
-    if (headerToggle.classList.contains("bx-arrow-back")) {
-      headerToggle.classList.remove("bx-arrow-back");
+    if (headerToggle.classList.contains("bx-right-arrow-alt")) {
+      headerToggle.classList.remove("bx-right-arrow-alt");
       headerToggle.classList.add("bx-menu-alt-left");
     } else {
-      headerToggle.classList.add("bx-arrow-back");
+      headerToggle.classList.add("bx-right-arrow-alt");
       headerToggle.classList.remove("bx-menu-alt-left");
     }
 
