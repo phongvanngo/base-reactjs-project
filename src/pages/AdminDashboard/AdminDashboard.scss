@@ -70,9 +70,9 @@ $primary-color: var(--admin-color-1);
               font-size: 30px;
             }
             &__name {
-              animation-name: disappearAnimation;
-              animation-duration: 2000ms;
-              animation-fill-mode: forwards;
+              // animation-name: disappearAnimation;
+              // animation-duration: 1000ms;
+              // animation-fill-mode: forwards;
               display: none;
               font-size: 18px;
               font-weight: 500;
@@ -109,7 +109,7 @@ $primary-color: var(--admin-color-1);
               position: fixed;
               z-index: 1000;
               left: $width-collapse-sidebar;
-              transform: translate(-12px, -100px);
+              transform: translate(-12px, -60px);
             }
           }
           &.active {
@@ -137,6 +137,11 @@ $primary-color: var(--admin-color-1);
       }
     }
   }
+  // ==================================================================
+
+  // expand sidebar
+
+  // ==================================================================
   &.show-sidebar {
     #admin-sidebar {
       width: $width-full-sidebar;
@@ -207,11 +212,11 @@ $primary-color: var(--admin-color-1);
 
 @keyframes disappearAnimation {
   0% {
-    // display: inline-block;
+    display: inline-block;
     // opacity: 1;
   }
-  50% {
-    // opacity: 0.5;
+  95% {
+    display: inline-block;
   }
   100% {
     display: none;
