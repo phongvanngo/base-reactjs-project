@@ -243,5 +243,10 @@ $primary-color: var(--admin-color-1);
       height: $height-navbar;
       border-bottom: 1px solid #eee;
     }
+    .main-admin-page {
+      // min-height: calc(100vh - $height-navbar);
+      min-height: calc(100vh - 70px);
+      background-color: #f9f9f9;
+    }
   }
 }

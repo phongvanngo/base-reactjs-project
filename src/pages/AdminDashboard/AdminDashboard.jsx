@@ -147,7 +147,7 @@ export default function LandingPage() {
               <i className="bx bx-menu bx-x" id="header-toggle"></i>
             </button>
           </header>
-          <div>
+          <div className="main-admin-page">
             <AdminDashboardRoutes />
           </div>
         </div>
