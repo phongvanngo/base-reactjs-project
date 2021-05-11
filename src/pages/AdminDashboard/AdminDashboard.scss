@@ -1,7 +1,7 @@
 $width-full-sidebar: 300px;
-$width-collapse-sidebar: 70px;
+$width-collapse-sidebar: 80px;
 
-$height-navbar: 85px;
+$height-navbar: 70px;
 
 $primary-color: var(--admin-color-1);
 
@@ -9,13 +9,13 @@ $primary-color: var(--admin-color-1);
   #admin-sidebar {
     background: var(--admin-color-1);
     width: $width-collapse-sidebar;
-    transition: 0.5s;
+    transition: 0.3s;
 
     min-height: 100vh;
     height: 100%;
 
     position: fixed;
-    overflow: hidden;
+    // overflow: visible;
     padding-bottom: 10px;
     padding-left: 0px;
 
@@ -25,7 +25,7 @@ $primary-color: var(--admin-color-1);
       border-bottom: 1px solid rgba(255, 255, 255, 0.15);
       position: fixed;
       left: auto;
-      transition: all 2s;
+      transition: all 0.3s;
       .brand {
         display: flex;
         justify-content: center;
@@ -40,6 +40,7 @@ $primary-color: var(--admin-color-1);
       position: fixed;
       top: $height-navbar;
       width: $width-collapse-sidebar;
+      transition: all 0.3s;
       height: calc(100% - 85px);
       .menu-list {
         position: relative;
@@ -52,25 +53,32 @@ $primary-color: var(--admin-color-1);
           cursor: pointer;
           border-radius: 17px;
           margin-bottom: 10px;
-          transition: all 0.5s;
           .menu-item__title {
             position: relative;
             color: rgba(255, 255, 255, 0.7);
             padding: 15px 15px;
 
-            display: grid;
-            grid-template-columns: 25px max-content 1fr;
-            column-gap: 15px;
+            // display: grid;
+            // grid-template-columns: 25px max-content 1fr;
+            // column-gap: 15px;
+
+            display: flex;
+
             align-items: center;
 
             &__icon {
               font-size: 30px;
             }
             &__name {
+              animation-name: disappearAnimation;
+              animation-duration: 2000ms;
+              animation-fill-mode: forwards;
+              display: none;
               font-size: 18px;
               font-weight: 500;
             }
             &__submenu-icon {
+              display: none;
               font-size: 25px;
               justify-self: flex-end;
               transform: rotate(-90deg);
@@ -79,11 +87,9 @@ $primary-color: var(--admin-color-1);
           }
 
           .submenu-list {
-            color: white;
             display: none;
+            color: white;
             flex-direction: column;
-
-            transition: all ease-in-out 2s;
 
             li {
               padding: 8px 55px;
@@ -96,6 +102,15 @@ $primary-color: var(--admin-color-1);
             background-color: #554abe;
             .menu-item__title {
             }
+            .submenu-list {
+              background-color: #554abe;
+              border-radius: 20px;
+              display: block;
+              position: fixed;
+              z-index: 1000;
+              left: $width-collapse-sidebar;
+              transform: translate(-12px, -100px);
+            }
           }
           &.active {
             background-color: #554abe;
@@ -104,21 +119,18 @@ $primary-color: var(--admin-color-1);
                 transform: none;
               }
             }
-            .submenu-list {
-              display: flex;
-              transition: all ease-in-out 2s;
-            }
           }
         }
       }
 
       .menu-list::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 1);
+        // -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 1);
         background-color: var(--admin-color-1);
       }
       .menu-list::-webkit-scrollbar {
         width: 5px;
         background-color: #f5f5f5;
+        // display: none;
       }
       .menu-list::-webkit-scrollbar-thumb {
         background-color: rgba(255, 255, 255, 0.76);
@@ -138,6 +150,42 @@ $primary-color: var(--admin-color-1);
       }
       .menu-container {
         width: $width-full-sidebar;
+        .menu-list {
+          .menu-item {
+            &__title {
+              display: grid;
+              grid-template-columns: 25px max-content 1fr;
+              column-gap: 15px;
+
+              &__name {
+                // opacity: 1;
+                // animation-name: appearAnimation;
+                // animation-duration: 500ms;
+                // animation-fill-mode: forwards;
+                display: inline-block;
+              }
+              &__submenu-icon {
+                display: inline-block;
+              }
+            }
+            .submenu-list {
+              position: relative;
+            }
+            &:hover {
+              .submenu-list {
+                display: none;
+                position: relative;
+                transform: none;
+                left: 0px;
+              }
+            }
+            &.active {
+              .submenu-list {
+                display: flex;
+              }
+            }
+          }
+        }
       }
     }
     #admin-main {
@@ -154,5 +202,37 @@ $primary-color: var(--admin-color-1);
       height: $height-navbar;
       border-bottom: 1px solid #eee;
     }
+  }
+}
+
+@keyframes disappearAnimation {
+  0% {
+    // display: inline-block;
+    // opacity: 1;
+  }
+  50% {
+    // opacity: 0.5;
+  }
+  100% {
+    display: none;
+  }
+}
+@keyframes appearAnimation {
+  0% {
+    transform: scale(0);
+    display: none;
+  }
+  25% {
+    transform: scale(0.25);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  75% {
+    transform: scale(0.75);
+  }
+  100% {
+    display: inline-block;
+    transform: scale(1);
   }
 }
