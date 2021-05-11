@@ -2,6 +2,7 @@ import { changeAdminNavbarTitle } from "app/redux/commonSlice";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import TheaterSystemFormModal from "./TheaterSystemFormModal";
+import TheaterSystemTable from "./TheaterSystemTable";
 export default function TheaterSystemManagement() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -33,6 +34,7 @@ export default function TheaterSystemManagement() {
           Open dialog
         </button>
       </div>
+      <TheaterSystemTable />
     </div>
   );
 }

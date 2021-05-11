@@ -85,7 +85,7 @@ $primary-color: var(--admin-color-1);
               font-size: 25px;
               justify-self: flex-end;
               transform: rotate(-90deg);
-              transition: 0.5s;
+              transition: 0.3s;
             }
           }
 
@@ -234,14 +234,18 @@ $primary-color: var(--admin-color-1);
     }
   }
   #admin-main {
-    transition: 0.5s;
+    transition: 0.3s;
     width: 100%;
     padding-left: $width-collapse-sidebar;
     min-height: 100vh;
     height: 100%;
     #admin__navbar {
+      position: fixed;
+      width: 100%;
       height: $height-navbar;
       border-bottom: 1px solid #eee;
+      background-color: var(--admin-color-2);
+      z-index: 1;
       #header-toggle-icon {
         font-size: 35px;
         color: var(--admin-color-1);
@@ -249,7 +253,9 @@ $primary-color: var(--admin-color-1);
     }
     .main-admin-page {
       // min-height: calc(100vh - $height-navbar);
+      z-index: 0;
       min-height: calc(100vh - 70px);
+      padding-top: $height-navbar;
       background-color: #f9f9f9;
     }
   }
