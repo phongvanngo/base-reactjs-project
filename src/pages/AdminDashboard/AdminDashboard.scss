@@ -41,7 +41,8 @@ $primary-color: var(--admin-color-1);
       top: $height-navbar;
       width: $width-collapse-sidebar;
       transition: all 0.3s;
-      height: calc(100% - 85px);
+      //$height-navbar
+      height: calc(100% - 70px);
       .menu-list {
         position: relative;
         height: 100%;
@@ -90,7 +91,8 @@ $primary-color: var(--admin-color-1);
             display: none;
             color: white;
             flex-direction: column;
-
+            padding-top: 10px;
+            padding-bottom: 10px;
             li {
               padding: 8px 55px;
               font-size: 16px;
@@ -104,7 +106,7 @@ $primary-color: var(--admin-color-1);
             }
             .submenu-list {
               background-color: #554abe;
-              border-radius: 20px;
+              border-radius: 5px;
               display: block;
               position: fixed;
               z-index: 1000;
@@ -181,6 +183,7 @@ $primary-color: var(--admin-color-1);
                 display: none;
                 position: relative;
                 transform: none;
+                background-color: transparent;
                 left: 0px;
               }
             }
