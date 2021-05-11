@@ -36,11 +36,8 @@ export default function LandingPage() {
     adminLayout.classList.toggle("show-sidebar");
   };
 
-  const {
-    MOVIE_MANAGEMENT,
-    THEATER_MANAGEMENT,
-    SHOWTIME_MANAGEMENT,
-  } = AdminRoutes;
+  const { MOVIE_MANAGEMENT, THEATER_MANAGEMENT, SHOWTIME_MANAGEMENT } =
+    AdminRoutes;
 
   return (
     <Router>
@@ -118,6 +115,17 @@ export default function LandingPage() {
                 </ul>
               </li>
             </ul>
+            <div className="btn-logout-wrapper">
+              <div
+                className="btn-logout"
+                onClick={() => {
+                  handleLogout();
+                }}
+              >
+                <i className="bx bx-log-out btn-logout__icon"></i>
+                <span className="btn-logout__name">Đăng xuất</span>
+              </div>
+            </div>
           </div>
         </aside>
         <div id="admin-main">

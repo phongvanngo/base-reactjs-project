@@ -41,8 +41,13 @@ $primary-color: var(--admin-color-1);
       top: $height-navbar;
       width: $width-collapse-sidebar;
       transition: all 0.3s;
-      //$height-navbar
-      height: calc(100% - 70px);
+
+      // height: calc(100% - $height-navbar);
+      height: calc(100% - 90px);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       .menu-list {
         position: relative;
         height: 100%;
@@ -71,9 +76,6 @@ $primary-color: var(--admin-color-1);
               font-size: 30px;
             }
             &__name {
-              // animation-name: disappearAnimation;
-              // animation-duration: 1000ms;
-              // animation-fill-mode: forwards;
               display: none;
               font-size: 18px;
               font-weight: 500;
@@ -89,7 +91,7 @@ $primary-color: var(--admin-color-1);
 
           .submenu-list {
             display: none;
-            color: white;
+            color: rgba(255, 255, 255, 0.7);
             flex-direction: column;
             padding-top: 10px;
             padding-bottom: 10px;
@@ -97,6 +99,9 @@ $primary-color: var(--admin-color-1);
               padding: 8px 55px;
               font-size: 16px;
               font-weight: 400;
+              &:hover {
+                color: ghostwhite;
+              }
             }
           }
 
@@ -137,6 +142,31 @@ $primary-color: var(--admin-color-1);
       .menu-list::-webkit-scrollbar-thumb {
         background-color: rgba(255, 255, 255, 0.76);
       }
+      .btn-logout-wrapper {
+        width: 100%;
+        padding: 10px 10px;
+        .btn-logout {
+          background-color: white;
+          color: var(--admin-color-1);
+          border-radius: 20px;
+          justify-content: center;
+          display: flex;
+          cursor: pointer;
+          padding: 15px 15px;
+          &__icon {
+            font-size: 30px;
+          }
+          &__name {
+            display: none;
+            font-size: 18px;
+            margin-left: 10px;
+            font-weight: 500;
+          }
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+          }
+        }
+      }
     }
   }
   // ==================================================================
@@ -165,10 +195,6 @@ $primary-color: var(--admin-color-1);
               column-gap: 15px;
 
               &__name {
-                // opacity: 1;
-                // animation-name: appearAnimation;
-                // animation-duration: 500ms;
-                // animation-fill-mode: forwards;
                 display: inline-block;
               }
               &__submenu-icon {
@@ -194,6 +220,13 @@ $primary-color: var(--admin-color-1);
             }
           }
         }
+        .btn-logout-wrapper {
+          .btn-logout {
+            &__name {
+              display: block;
+            }
+          }
+        }
       }
     }
     #admin-main {
@@ -210,37 +243,5 @@ $primary-color: var(--admin-color-1);
       height: $height-navbar;
       border-bottom: 1px solid #eee;
     }
-  }
-}
-
-@keyframes disappearAnimation {
-  0% {
-    display: inline-block;
-    // opacity: 1;
-  }
-  95% {
-    display: inline-block;
-  }
-  100% {
-    display: none;
-  }
-}
-@keyframes appearAnimation {
-  0% {
-    transform: scale(0);
-    display: none;
-  }
-  25% {
-    transform: scale(0.25);
-  }
-  50% {
-    transform: scale(0.5);
-  }
-  75% {
-    transform: scale(0.75);
-  }
-  100% {
-    display: inline-block;
-    transform: scale(1);
   }
 }
