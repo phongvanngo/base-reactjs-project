@@ -1,9 +1,11 @@
-import React from 'react'
+import { changeAdminNavbarTitle } from "app/redux/commonSlice";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 export default function TheaterManagement() {
-    return (
-        <div>
-            theater
-        </div>
-    )
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(changeAdminNavbarTitle("Quản lý cụm rạp"));
+  }, []);
+  return <div>theater</div>;
 }

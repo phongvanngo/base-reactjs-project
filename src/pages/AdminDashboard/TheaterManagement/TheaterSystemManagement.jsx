@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import { changeAdminNavbarTitle } from "app/redux/commonSlice";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import TheaterSystemFormModal from "./TheaterSystemFormModal";
 export default function TheaterSystemManagement() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(changeAdminNavbarTitle("Quản lý hệ thống rạp"));
+  }, []);
+
   const [isOpenFormModal, setIsOpenFormModal] = useState(false);
 
   const openModal = () => {

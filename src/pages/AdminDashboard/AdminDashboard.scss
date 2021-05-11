@@ -242,6 +242,10 @@ $primary-color: var(--admin-color-1);
     #admin__navbar {
       height: $height-navbar;
       border-bottom: 1px solid #eee;
+      #header-toggle-icon {
+        font-size: 35px;
+        color: var(--admin-color-1);
+      }
     }
     .main-admin-page {
       // min-height: calc(100vh - $height-navbar);

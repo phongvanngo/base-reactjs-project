@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import { AdminRoutes } from "routes.const";
 import "./AdminDashboard.scss";
 import AdminDashboardRoutes from "./AdminDashboard.routes";
-import { combineReducers } from "redux";
+import Navbar from "./Navbar";
 
 export default function LandingPage() {
   const dispatch = useDispatch();
@@ -31,8 +31,16 @@ export default function LandingPage() {
 
   const handleToggleSidebar = () => {
     const adminLayout = document.getElementById("admin-dashboard-container");
-    const headerToggle = document.getElementById("header-toggle");
-    headerToggle.classList.toggle("bx-x");
+    const headerToggle = document.getElementById("header-toggle-icon");
+
+    if (headerToggle.classList.contains("bx-arrow-back")) {
+      headerToggle.classList.remove("bx-arrow-back");
+      headerToggle.classList.add("bx-menu-alt-left");
+    } else {
+      headerToggle.classList.add("bx-arrow-back");
+      headerToggle.classList.remove("bx-menu-alt-left");
+    }
+
     adminLayout.classList.toggle("show-sidebar");
   };
 
@@ -137,16 +145,7 @@ export default function LandingPage() {
           </div>
         </aside>
         <div id="admin-main">
-          <header id="admin__navbar" className="px-3 flex items-center ">
-            <button
-              className="text-2xl focus:outline-none"
-              onClick={() => {
-                handleToggleSidebar();
-              }}
-            >
-              <i className="bx bx-menu bx-x" id="header-toggle"></i>
-            </button>
-          </header>
+          <Navbar handleToggleSidebar={handleToggleSidebar} />
           <div className="main-admin-page">
             <AdminDashboardRoutes />
           </div>
