@@ -36,8 +36,12 @@ export default function LandingPage() {
     adminLayout.classList.toggle("show-sidebar");
   };
 
-  const { MOVIE_MANAGEMENT, THEATER_MANAGEMENT, SHOWTIME_MANAGEMENT } =
-    AdminRoutes;
+  const {
+    MOVIE_MANAGEMENT,
+    THEATER_MANAGEMENT,
+    SHOWTIME_MANAGEMENT,
+    THEATER_SYSTEM_MANAGEMENT,
+  } = AdminRoutes;
 
   return (
     <Router>
@@ -81,8 +85,12 @@ export default function LandingPage() {
                   <i className="bx bx-chevron-down menu-item__title__submenu-icon"></i>
                 </div>
                 <ul className="submenu-list">
-                  <li>Hệ thống rạp</li>
-                  <li>Cụm rạp</li>
+                  <li>
+                    <Link to={THEATER_SYSTEM_MANAGEMENT}>Hệ thống rạp</Link>
+                  </li>
+                  <li>
+                    <Link to={THEATER_MANAGEMENT}>Cụm rạp</Link>
+                  </li>
                 </ul>
               </li>
               <li className="menu-item">

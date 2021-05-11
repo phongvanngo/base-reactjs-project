@@ -15,6 +15,7 @@ export const AdminRoutes = {
     INTRODUCTION: `${PublicRoutes.ADMIN_DASHBOARD}`,
     MOVIE_MANAGEMENT: `${PublicRoutes.ADMIN_DASHBOARD}/movie-management`,
     THEATER_MANAGEMENT: `${PublicRoutes.ADMIN_DASHBOARD}/theater-management`,
+    THEATER_SYSTEM_MANAGEMENT: `${PublicRoutes.ADMIN_DASHBOARD}/theater-system-management`,
     SHOWTIME_MANAGEMENT: `${PublicRoutes.ADMIN_DASHBOARD}/showtime-management`,
 }
 
