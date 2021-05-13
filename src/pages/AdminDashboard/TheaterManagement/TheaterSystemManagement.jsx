@@ -19,7 +19,7 @@ export default function TheaterSystemManagement() {
   };
   return (
     <div>
-      <TheaterSystemFormModal
+      {/* <TheaterSystemFormModal
         isOpen={isOpenFormModal}
         closeModal={closeModal}
       />
@@ -33,8 +33,10 @@ export default function TheaterSystemManagement() {
         >
           Open dialog
         </button>
+      </div> */}
+      <div className="pt-20">
+        <TheaterSystemTable />
       </div>
-      <TheaterSystemTable />
     </div>
   );
 }

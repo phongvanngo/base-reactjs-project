@@ -230,13 +230,16 @@ $primary-color: var(--admin-color-1);
       }
     }
     #admin-main {
-      padding-left: $width-full-sidebar;
+      width: calc(100% - 300px);
+      margin-left: $width-full-sidebar;
     }
   }
   #admin-main {
     transition: 0.3s;
-    width: 100%;
-    padding-left: $width-collapse-sidebar;
+
+    width: calc(100% - 80px);
+    margin-left: $width-collapse-sidebar;
+
     min-height: 100vh;
     height: 100%;
     #admin__navbar {
@@ -253,6 +256,8 @@ $primary-color: var(--admin-color-1);
     }
     .main-admin-page {
       // min-height: calc(100vh - $height-navbar);
+      width: 100%;
+      padding: 20px;
       z-index: 0;
       min-height: calc(100vh - 70px);
       padding-top: $height-navbar;
