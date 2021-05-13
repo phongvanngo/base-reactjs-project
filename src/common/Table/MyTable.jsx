@@ -12,8 +12,8 @@ export default function MyTable() {
               className="h-full appearance-none rounded-l-full border w-30 py-2 px-3 text-gray-700 leading-tight focus:outline-none"
               placeholder="Tìm kiếm"
             />
-            <div className="bg-admin_color_1 rounded-r-full h-full w-10 p-1">
-              <i className="bx bx-search-alt text-2xl text-white m-auto text-center"></i>
+            <div className="bg-admin_color_1 rounded-r-full h-full w-12 p-1 flex justify-center hover:bg-indigo-900">
+              <i className="bx bx-search-alt text-2xl text-white m-auto "></i>
             </div>
           </div>
         </div>
