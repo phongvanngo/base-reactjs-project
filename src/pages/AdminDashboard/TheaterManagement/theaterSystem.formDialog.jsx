@@ -1,19 +1,52 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { closeTheaterSystemFormDialog } from "app/redux/dialogSlice";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import {
+  createTheaterSystem,
+  updateTheaterSystem,
+} from "app/redux/theaterSlice";
 
 export default function TheaterSystemFormModal() {
+  const { register, handleSubmit, setValue } = useForm();
+
   const dispatch = useDispatch();
-  const isOpen = useSelector(
-    (state) => state.dialog.theaterSystemFormDialog.isOpen
+  const { isOpen, defaultData } = useSelector(
+    (state) => state.dialog.theaterSystemFormDialog
   );
-  function handleSubmit() {
-    window.alert("yeye");
+
+  console.log(defaultData);
+
+  function onSaveData(data) {
+    if (defaultData?.id === null) {
+      console.log(data);
+      dispatch(createTheaterSystem(data));
+      dispatch(closeTheaterSystemFormDialog());
+    } else {
+      dispatch(updateTheaterSystem({ ...data, id: defaultData.id }));
+      dispatch(closeTheaterSystemFormDialog());
+    }
   }
   function handleCloseModal() {
     dispatch(closeTheaterSystemFormDialog());
   }
+
+  console.log("render");
+
+  useEffect(() => {
+    if (defaultData?.id) {
+      const { name, alias, logo } = defaultData;
+      setValue("name", name);
+      setValue("alias", alias);
+      setValue("logo", logo);
+    } else {
+      setValue("name", "");
+      setValue("alias", "");
+      setValue("logo", "");
+    }
+  }, [setValue, defaultData]);
+
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -57,7 +90,11 @@ export default function TheaterSystemFormModal() {
                   className="text-lg font-medium leading-6 text-gray-900 border-b"
                 >
                   <div className="pr-5 pl-5 pt-4 pb-3 w-full flex justify-between">
-                    <h1>Thêm rạp chiếu mới</h1>
+                    <h1 className="font-normal">
+                      {defaultData?.id
+                        ? "Chỉnh sửa hệ thống rạp chiếu"
+                        : "Thêm hệ thống rạp chiếu"}
+                    </h1>
                     <button
                       onClick={handleCloseModal}
                       className="focus:outline-none hover:text-gray-400"
@@ -66,26 +103,35 @@ export default function TheaterSystemFormModal() {
                     </button>
                   </div>
                 </Dialog.Title>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(onSaveData)}>
                   <div className="mt-2 p-6">
                     <div className="mb-8">
-                      <span className="mb-2 flex flex-col">Tên rạp chiếu</span>
+                      <span className="mb-2 flex flex-col font-extrabold">
+                        Tên hệ thống rạp chiếu
+                      </span>
                       <input
                         type="text"
+                        {...register("name", {})}
                         className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
                       />
                     </div>
                     <div className="mb-8">
-                      <span className="mb-2 flex flex-col">Tên rạp chiếu</span>
+                      <span className="font-extrabold mb-2 flex flex-col">
+                        Bí danh
+                      </span>
                       <input
                         type="text"
+                        {...register("alias", {})}
                         className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
                       />
                     </div>
                     <div className="mb-8">
-                      <span className="mb-2 flex flex-col">Tên rạp chiếu</span>
+                      <span className="font-extrabold mb-2 flex flex-col">
+                        Logo
+                      </span>
                       <input
                         type="text"
+                        {...register("logo", {})}
                         className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
                       />
                     </div>
@@ -96,7 +142,9 @@ export default function TheaterSystemFormModal() {
                       type="submit"
                       value="Lưu"
                       className="inline-flex float-right px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                      onClick={handleCloseModal}
+                      onClick={() => {
+                        handleSubmit(onSaveData);
+                      }}
                     />
                   </div>
                 </form>

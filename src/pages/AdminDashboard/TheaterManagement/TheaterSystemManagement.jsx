@@ -3,7 +3,7 @@ import { fetchListTheaterSystem } from "app/redux/theaterSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TheaterSystemTable from "./TheaterSystem.table";
-import TheaterSystemFormModal from "./theaterSystem.formModal";
+import TheaterSystemFormModal from "./theaterSystem.formDialog";
 
 export default function TheaterSystemManagement() {
   const dispatch = useDispatch();

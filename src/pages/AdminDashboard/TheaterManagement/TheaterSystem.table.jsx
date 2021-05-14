@@ -1,9 +1,9 @@
 import { filterArrayBySearchTerm } from "app/myLibrary/utilities";
-import MyTable from "common/Table/MyTable";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import MenuDropdown from "./TheaterSystem.table.menu";
 import { openTheaterSystemFormDialog } from "app/redux/dialogSlice";
+import { deleteTheaterSystem } from "app/redux/theaterSlice";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import MenuDropdown from "./TheaterSystem.table.menu";
 
 export default function TheaterSystemTable({ listTheaterSystem }) {
   const dispatch = useDispatch();
@@ -13,7 +13,16 @@ export default function TheaterSystemTable({ listTheaterSystem }) {
     listTheaterSystem,
     searchTerm
   );
-  console.log(currentListTheaterSystem);
+
+  const handleEditTheaterSystem = (theaterSystemData) => {
+    dispatch(openTheaterSystemFormDialog(theaterSystemData));
+  };
+
+  const handleDeleteTheaterSystem = (id) => {
+    if (window.confirm("Bạn có chắc chắn xóa")) {
+      dispatch(deleteTheaterSystem(id));
+    }
+  };
 
   return (
     <div className="w-full">
@@ -36,7 +45,7 @@ export default function TheaterSystemTable({ listTheaterSystem }) {
           <h1 className="text-xl font-medium">Danh sách hệ thống rạp chiếu</h1>
           <button
             onClick={() => {
-              dispatch(openTheaterSystemFormDialog());
+              dispatch(openTheaterSystemFormDialog({ id: null }));
             }}
             className="flex items-center bg-admin_color_1 appearance-none  rounded-full w-100 h-full  py-2 px-8 text-admin_color_2 leading-tight hover:bg-indigo-900 focus:outline-none"
           >
@@ -84,7 +93,14 @@ export default function TheaterSystemTable({ listTheaterSystem }) {
 
                     <td className="px-2 py-4">{alias}</td>
                     <td className="px-2 py-4">
-                      <MenuDropdown />
+                      <MenuDropdown
+                        handleDelete={() => {
+                          handleDeleteTheaterSystem(id);
+                        }}
+                        handleEdit={() => {
+                          handleEditTheaterSystem(theaterSystem);
+                        }}
+                      />
                     </td>
                   </tr>
                 );

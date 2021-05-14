@@ -1,7 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
-export default function MenuTheaterSytemTable() {
+export default function MenuTheaterSytemTable({ handleEdit, handleDelete }) {
   return (
     <div>
       <Menu as="div" className="relative inline-block text-left">
@@ -29,6 +29,9 @@ export default function MenuTheaterSytemTable() {
                 <Menu.Item>
                   {({ active }) => (
                     <button
+                      onClick={() => {
+                        handleEdit();
+                      }}
                       className={`${
                         active
                           ? "bg-violet-500 text-white focus:outline-none"
@@ -46,7 +49,7 @@ export default function MenuTheaterSytemTable() {
                           aria-hidden="true"
                         />
                       )}
-                      Edit
+                      Chỉnh sửa
                     </button>
                   )}
                 </Menu.Item>
@@ -57,6 +60,9 @@ export default function MenuTheaterSytemTable() {
                 <Menu.Item>
                   {({ active }) => (
                     <button
+                      onClick={() => {
+                        handleDelete();
+                      }}
                       className={`${
                         active
                           ? "bg-violet-500 text-white focus-within:outline-none"
@@ -74,7 +80,7 @@ export default function MenuTheaterSytemTable() {
                           aria-hidden="true"
                         />
                       )}
-                      Delete
+                      Xóa
                     </button>
                   )}
                 </Menu.Item>
