@@ -1,5 +1,7 @@
 import React from "react";
 
+import { people } from "./fakeTableData";
+
 export default function MyTable() {
   return (
     <div className="w-full">

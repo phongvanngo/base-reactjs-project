@@ -4,6 +4,8 @@ import loadingReducer from './loadingSlice';
 import adminAuthReducer from './adminAuthSlice';
 import userAuthReducer from './userAuthSlice';
 import commonReducer from './commonSlice';
+import dialogReducer from './dialogSlice';
+import theaterReducer from './theaterSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +13,8 @@ export const store = configureStore({
     loading: loadingReducer,
     adminAuth: adminAuthReducer,
     userAuth: userAuthReducer,
-    common:commonReducer
+    common:commonReducer,
+    dialog:dialogReducer,
+    theater:theaterReducer,
   },
 });

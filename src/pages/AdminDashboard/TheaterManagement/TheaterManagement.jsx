@@ -6,6 +6,6 @@ export default function TheaterManagement() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(changeAdminNavbarTitle("Quản lý cụm rạp"));
-  }, []);
+  }, [dispatch]);
   return <div>theater</div>;
 }

@@ -1,6 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import adminAuthApi from 'app/api/adminAuthApi';
-import { startLoading, stopLoading } from './loadingSlice';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     admin_page_navbar_title:"Trang chủ"

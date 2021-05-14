@@ -1,16 +1,23 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { closeTheaterSystemFormDialog } from "app/redux/dialogSlice";
+import { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function TheaterSystemFormModal({ isOpen, closeModal }) {
+export default function TheaterSystemFormModal() {
+  const dispatch = useDispatch();
+  const isOpen = useSelector(
+    (state) => state.dialog.theaterSystemFormDialog.isOpen
+  );
+  function handleCloseModal() {
+    dispatch(closeTheaterSystemFormDialog());
+  }
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto"
-          onClose={() => {
-            closeModal();
-          }}
+          className="fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-60"
+          onClose={handleCloseModal}
         >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
@@ -59,7 +66,7 @@ export default function TheaterSystemFormModal({ isOpen, closeModal }) {
                   <button
                     type="button"
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    onClick={closeModal}
+                    onClick={handleCloseModal}
                   >
                     Got it, thanks!
                   </button>
