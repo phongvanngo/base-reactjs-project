@@ -3,13 +3,28 @@ import { closeTheaterSystemFormDialog } from "app/redux/dialogSlice";
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import {
   createTheaterSystem,
   updateTheaterSystem,
 } from "app/redux/theaterSlice";
 
+const schema = yup.object().shape({
+  name: yup.string().required(),
+  alias: yup.string().required(),
+});
+
 export default function TheaterSystemFormModal() {
-  const { register, handleSubmit, setValue } = useForm();
+  let {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+    clearErrors,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const dispatch = useDispatch();
   const { isOpen, defaultData } = useSelector(
@@ -35,6 +50,8 @@ export default function TheaterSystemFormModal() {
   console.log("render");
 
   useEffect(() => {
+    clearErrors("name");
+    clearErrors("alias");
     if (defaultData?.id) {
       const { name, alias, logo } = defaultData;
       setValue("name", name);
@@ -46,6 +63,8 @@ export default function TheaterSystemFormModal() {
       setValue("logo", "");
     }
   }, [setValue, defaultData]);
+
+  console.log(errors);
 
   return (
     <>
@@ -112,8 +131,20 @@ export default function TheaterSystemFormModal() {
                       <input
                         type="text"
                         {...register("name", {})}
-                        className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
+                        className={
+                          "h-full w-full appearance-none rounded-full  w-30 py-4 px-6 leading-tight focus:outline-none border  text-gray-500" +
+                          (errors.name
+                            ? " border-red-500"
+                            : " focus:border-indigo-500")
+                        }
                       />
+                      {errors.name ? (
+                        <span className="ml-2 mt-2 text-red-500">
+                          *Không được để trống
+                        </span>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div className="mb-8">
                       <span className="font-extrabold mb-2 flex flex-col">
@@ -122,8 +153,20 @@ export default function TheaterSystemFormModal() {
                       <input
                         type="text"
                         {...register("alias", {})}
-                        className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
+                        className={
+                          "h-full w-full appearance-none rounded-full  w-30 py-4 px-6 leading-tight focus:outline-none border  text-gray-500" +
+                          (errors.alias
+                            ? " border-red-500"
+                            : " focus:border-indigo-500")
+                        }
                       />
+                      {errors.name ? (
+                        <span className="ml-2 mt-2 text-red-500">
+                          *Không được để trống
+                        </span>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div className="mb-8">
                       <span className="font-extrabold mb-2 flex flex-col">
