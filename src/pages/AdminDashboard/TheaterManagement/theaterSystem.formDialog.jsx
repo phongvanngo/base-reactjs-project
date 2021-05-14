@@ -92,7 +92,7 @@ export default function TheaterSystemFormModal() {
                   <div className="pr-5 pl-5 pt-4 pb-3 w-full flex justify-between">
                     <h1 className="font-normal">
                       {defaultData?.id
-                        ? "Chỉnh sửa hệ thống rạp chiếu"
+                        ? "Chỉnh sửa hệ thống rạp chiếu phim"
                         : "Thêm hệ thống rạp chiếu"}
                     </h1>
                     <button
