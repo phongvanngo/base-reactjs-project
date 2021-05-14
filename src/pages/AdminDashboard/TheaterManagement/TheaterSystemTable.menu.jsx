@@ -23,14 +23,16 @@ export default function MenuTheaterSytemTable() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="z-10 absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
-              <div className="rounded-md hover:bg-purple-500">
+              <div className="rounded-md hover:bg-purple-800">
                 <Menu.Item>
                   {({ active }) => (
                     <button
                       className={`${
-                        active ? "bg-violet-500 text-white" : "text-gray-900"
+                        active
+                          ? "bg-violet-500 text-white focus:outline-none"
+                          : "text-gray-900"
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     >
                       {active ? (
@@ -51,12 +53,14 @@ export default function MenuTheaterSytemTable() {
               </div>
             </div>
             <div className="px-1 py-1">
-              <div className="rounded-md hover:bg-purple-500">
+              <div className="rounded-md hover:bg-purple-800">
                 <Menu.Item>
                   {({ active }) => (
                     <button
                       className={`${
-                        active ? "bg-violet-500 text-white" : "text-gray-900"
+                        active
+                          ? "bg-violet-500 text-white focus-within:outline-none"
+                          : "text-gray-900"
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     >
                       {active ? (

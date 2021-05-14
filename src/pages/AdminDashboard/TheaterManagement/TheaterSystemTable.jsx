@@ -21,6 +21,9 @@ export default function TheaterSystemTable({ listTheaterSystem }) {
             <input
               className="h-full appearance-none rounded-l-full border w-30 py-2 px-3 text-gray-700 leading-tight focus:outline-none"
               placeholder="Tìm kiếm"
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
             />
             <div className="bg-admin_color_1 rounded-r-full h-full w-12 p-1 flex justify-center hover:bg-indigo-900">
               <i className="bx bx-search-alt text-2xl text-white m-auto "></i>
@@ -56,45 +59,29 @@ export default function TheaterSystemTable({ listTheaterSystem }) {
               </tr>
             </thead>
             <tbody className="text-gray-500 font-normal">
-              <tr className="border-b border-gray-200">
-                <td className="px-2 py-4 text-gray-500 text-sm font-extrabold">
-                  <strong>01</strong>
-                </td>
-                <td className="px-2 py-4">Intro to CSS</td>
-                <td className="px-2 py-4">
-                  <img
-                    className="max-h-20 w-auto rounded-lg"
-                    alt="logo"
-                    src="https://picsum.photos/200/300"
-                  />
-                </td>
+              {currentListTheaterSystem.map((theaterSystem, index) => {
+                const { logo, id, name, alias } = theaterSystem;
+                return (
+                  <tr key={index} className="border-b border-gray-200">
+                    <td className="px-2 py-4 text-gray-500 text-sm font-extrabold">
+                      <strong>{index + 1}</strong>
+                    </td>
+                    <td className="px-2 py-4">{name}</td>
+                    <td className="px-2 py-4">
+                      <img
+                        className="h-20 w-20 rounded-lg"
+                        alt="logo"
+                        src={logo}
+                      />
+                    </td>
 
-                <td className="px-2 py-4">858</td>
-                <td className="px-2 py-4">
-                  {/* <div className="flex justify-center w-10 h-10 rounded-full bg-green-100 text-green-600 pt-1 transition duration-500 hover:text-white hover:bg-green-500 cursor-pointer">
-                    <span className=" tracking-wider font-normal text-center text-xl">
-                      ...
-                    </span>
-                  </div> */}
-                  <MenuDropdown />
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200">
-                <td className="px-2 py-4 text-gray-500 font-extrabold">
-                  <strong>02</strong>
-                </td>
-                <td className="px-2 py-4">Intro to CSS</td>
-                <td className="px-2 py-4">Adam</td>
-                <td className="px-2 py-4"></td>
-              </tr>
-              <tr className="border-b border-gray-200">
-                <td className="px-2 py-4 text-gray-500 font-extrabold">
-                  <strong>03</strong>
-                </td>
-                <td className="px-2 py-4">Intro to CSS</td>
-                <td className="px-2 py-4">Adam</td>
-                <td className="px-2 py-4">858</td>
-              </tr>
+                    <td className="px-2 py-4">{alias}</td>
+                    <td className="px-2 py-4">
+                      <MenuDropdown />
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
