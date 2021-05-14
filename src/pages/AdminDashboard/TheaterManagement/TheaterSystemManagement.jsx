@@ -2,9 +2,8 @@ import { changeAdminNavbarTitle } from "app/redux/commonSlice";
 import { fetchListTheaterSystem } from "app/redux/theaterSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import TheaterSystemFormModal from "./TheaterSystemFormModal";
-import TheaterSystemTable from "./TheaterSystemTable";
-import Example from "common/Menu Dropdown/Menu";
+import TheaterSystemTable from "./TheaterSystem.table";
+import TheaterSystemFormModal from "./theaterSystem.formModal";
 
 export default function TheaterSystemManagement() {
   const dispatch = useDispatch();

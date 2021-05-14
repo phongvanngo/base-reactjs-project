@@ -1,10 +1,12 @@
 import { filterArrayBySearchTerm } from "app/myLibrary/utilities";
 import MyTable from "common/Table/MyTable";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import MenuDropdown from "./TheaterSystemTable.menu";
+import { useDispatch, useSelector } from "react-redux";
+import MenuDropdown from "./TheaterSystem.table.menu";
+import { openTheaterSystemFormDialog } from "app/redux/dialogSlice";
 
 export default function TheaterSystemTable({ listTheaterSystem }) {
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
 
   let currentListTheaterSystem = filterArrayBySearchTerm(
@@ -32,7 +34,12 @@ export default function TheaterSystemTable({ listTheaterSystem }) {
         </div>
         <div className="p-6 flex justify-between items-center h-20 border-b border-gray-200 rounded-t-3xl bg-white">
           <h1 className="text-xl font-medium">Danh sách hệ thống rạp chiếu</h1>
-          <button className="flex items-center bg-admin_color_1 appearance-none  rounded-full w-100 h-full  py-2 px-8 text-admin_color_2 leading-tight hover:bg-indigo-900 focus:outline-none">
+          <button
+            onClick={() => {
+              dispatch(openTheaterSystemFormDialog());
+            }}
+            className="flex items-center bg-admin_color_1 appearance-none  rounded-full w-100 h-full  py-2 px-8 text-admin_color_2 leading-tight hover:bg-indigo-900 focus:outline-none"
+          >
             <i className="bx bx-plus mr-2 align-middle block"></i>
             <span>Thêm rạp mới</span>
           </button>
@@ -84,6 +91,11 @@ export default function TheaterSystemTable({ listTheaterSystem }) {
               })}
             </tbody>
           </table>
+          {currentListTheaterSystem.length === 0 ? (
+            <div className="text-center text-xl text-gray-500">
+              <span>Không có rạp chiếu nào</span>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
