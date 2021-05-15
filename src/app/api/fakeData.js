@@ -85,12 +85,234 @@ export const listCumRap = () => {
   console.log(data);
 
   for (let i = 0; i < data.length; i++) {
-    let r = Math.floor(Math.random() * 10);
+    let r = (Math.floor(Math.random() * 10) + 1) % 5;
     data[i].theaterSystemName = listTheaterSystem[r]?.name;
     data[i] = { ...data[i], theaterSystemId: listTheaterSystem[r]?.id };
   }
 
   return data;
+};
+
+export const listPhongChieu = () => {
+  let data = JSON.parse(`
+  [{
+    "id": 1,
+    "name": "BRL",
+    "amountSeats": "Chilver",
+    "theaterSystemName": "Pamidronate Disodium",
+    "cumRapName": "Lotlux",
+    "cumRapId": 1
+  }, {
+    "id": 2,
+    "name": "EUR",
+    "amountSeats": "Rosenzwig",
+    "theaterSystemName": "LidoCream 5",
+    "cumRapName": "Flexidy",
+    "cumRapId": 4
+  }, {
+    "id": 3,
+    "name": "CNY",
+    "amountSeats": "Tolland",
+    "theaterSystemName": "Sweet Grape Antibacterial Hand",
+    "cumRapName": "Vagram",
+    "cumRapId": 2
+  }, {
+    "id": 4,
+    "name": "CNY",
+    "amountSeats": "Dulake",
+    "theaterSystemName": "Metronidazole",
+    "cumRapName": "Bitchip",
+    "cumRapId": 2
+  }, {
+    "id": 5,
+    "name": "USD",
+    "amountSeats": "Cribbott",
+    "theaterSystemName": "Terbinafine Hydrochloride",
+    "cumRapName": "Latlux",
+    "cumRapId": 3
+  }, {
+    "id": 6,
+    "name": "BRL",
+    "amountSeats": "Durnill",
+    "theaterSystemName": "Mesquite",
+    "cumRapName": "Stim",
+    "cumRapId": 9
+  }, {
+    "id": 7,
+    "name": "EUR",
+    "amountSeats": "Kainz",
+    "theaterSystemName": "CD DIORSNOW UV SHIELD BB CREME LIGHT SHADE WHITE REVEAL UV PROTECTION SPF 50",
+    "cumRapName": "Konklux",
+    "cumRapId": 9
+  }, {
+    "id": 8,
+    "name": "EUR",
+    "amountSeats": "Titford",
+    "theaterSystemName": "ESIKA HD COLOR HIGH DEFINITION COLOR SPF 20",
+    "cumRapName": "Ventosanzap",
+    "cumRapId": 10
+  }, {
+    "id": 9,
+    "name": "IDR",
+    "amountSeats": "Lomasna",
+    "theaterSystemName": "ziprasidone hydrochloride",
+    "cumRapName": "Bitchip",
+    "cumRapId": 10
+  }, {
+    "id": 10,
+    "name": "COP",
+    "amountSeats": "Wrigglesworth",
+    "theaterSystemName": "Omeprazole",
+    "cumRapName": "Tin",
+    "cumRapId": 5
+  }, {
+    "id": 11,
+    "name": "UAH",
+    "amountSeats": "Markovich",
+    "theaterSystemName": "Magnesium Sulfate",
+    "cumRapName": "Tresom",
+    "cumRapId": 8
+  }, {
+    "id": 12,
+    "name": "RUB",
+    "amountSeats": "Ruggles",
+    "theaterSystemName": "Vancomycin Hydrochloride",
+    "cumRapName": "Bamity",
+    "cumRapId": 10
+  }, {
+    "id": 13,
+    "name": "SEK",
+    "amountSeats": "Gambrell",
+    "theaterSystemName": "Glyburide and Metformin Hydrochloride",
+    "cumRapName": "Trippledex",
+    "cumRapId": 6
+  }, {
+    "id": 14,
+    "name": "GMD",
+    "amountSeats": "Laying",
+    "theaterSystemName": "Anticavity Fluoride Rinse",
+    "cumRapName": "Zoolab",
+    "cumRapId": 2
+  }, {
+    "id": 15,
+    "name": "PLN",
+    "amountSeats": "Tilte",
+    "theaterSystemName": "nifedipine",
+    "cumRapName": "Hatity",
+    "cumRapId": 6
+  }, {
+    "id": 16,
+    "name": "CNY",
+    "amountSeats": "Hooks",
+    "theaterSystemName": "Methocarbamol",
+    "cumRapName": "Job",
+    "cumRapId": 7
+  }, {
+    "id": 17,
+    "name": "CUP",
+    "amountSeats": "Dawtry",
+    "theaterSystemName": "Amlodipine Besylate and Benazepril Hydrochloride",
+    "cumRapName": "Stim",
+    "cumRapId": 10
+  }, {
+    "id": 18,
+    "name": "EUR",
+    "amountSeats": "Weems",
+    "theaterSystemName": "Ropinirole Hydrochloride",
+    "cumRapName": "Stringtough",
+    "cumRapId": 9
+  }, {
+    "id": 19,
+    "name": "CNY",
+    "amountSeats": "Boother",
+    "theaterSystemName": "Sinus Relief",
+    "cumRapName": "Stim",
+    "cumRapId": 10
+  }, {
+    "id": 20,
+    "name": "PLN",
+    "amountSeats": "Alyokhin",
+    "theaterSystemName": "Atenolol",
+    "cumRapName": "Zathin",
+    "cumRapId": 6
+  }, {
+    "id": 21,
+    "name": "PLN",
+    "amountSeats": "Shay",
+    "theaterSystemName": "TOPIRAMATE",
+    "cumRapName": "Toughjoyfax",
+    "cumRapId": 1
+  }, {
+    "id": 22,
+    "name": "PLN",
+    "amountSeats": "Lamport",
+    "theaterSystemName": "Pramipexole",
+    "cumRapName": "Vagram",
+    "cumRapId": 3
+  }, {
+    "id": 23,
+    "name": "RUB",
+    "amountSeats": "Spratling",
+    "theaterSystemName": "Leader Naproxen Sodium",
+    "cumRapName": "Lotlux",
+    "cumRapId": 10
+  }, {
+    "id": 24,
+    "name": "ISK",
+    "amountSeats": "Heller",
+    "theaterSystemName": "CPDA-1",
+    "cumRapName": "Aerified",
+    "cumRapId": 1
+  }, {
+    "id": 25,
+    "name": "NGN",
+    "amountSeats": "Pellman",
+    "theaterSystemName": "White Birch",
+    "cumRapName": "Bytecard",
+    "cumRapId": 4
+  }, {
+    "id": 26,
+    "name": "AFN",
+    "amountSeats": "Lundbeck",
+    "theaterSystemName": "Gabapentin",
+    "cumRapName": "Treeflex",
+    "cumRapId": 2
+  }, {
+    "id": 27,
+    "name": "PHP",
+    "amountSeats": "Warret",
+    "theaterSystemName": "CD CAPTURE TOTALE Multi-Perfection UVB Base Sunscreen SPF 50",
+    "cumRapName": "Latlux",
+    "cumRapId": 4
+  }, {
+    "id": 28,
+    "name": "YER",
+    "amountSeats": "Chittock",
+    "theaterSystemName": "Notaflu Lemon Oil",
+    "cumRapName": "Zamit",
+    "cumRapId": 10
+  }, {
+    "id": 29,
+    "name": "JPY",
+    "amountSeats": "Trump",
+    "theaterSystemName": "POPULUS DELTOIDES SSP MONILIFERA POLLEN",
+    "cumRapName": "Solarbreeze",
+    "cumRapId": 1
+  }, {
+    "id": 30,
+    "name": "CNY",
+    "amountSeats": "Pettican",
+    "theaterSystemName": "ShopRite Ibuprofen IB",
+    "cumRapName": "Viva",
+    "cumRapId": 1
+  }]
+  
+  `);
+
+  for (let i = 0; i < data.lenght; i++) {
+    let cumRap = listCumRap.find((e) => e.id === data[i].cumRapId);
+    data[i] = { ...data, cumRapName: cumRap?.name };
+  }
 };
 
 export const listMovies = JSON.parse(`

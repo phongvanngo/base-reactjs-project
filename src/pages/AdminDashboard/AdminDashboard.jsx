@@ -49,6 +49,7 @@ export default function LandingPage() {
     THEATER_MANAGEMENT,
     SHOWTIME_MANAGEMENT,
     THEATER_SYSTEM_MANAGEMENT,
+    PHONGCHIEU_MANAGEMENT,
   } = AdminRoutes;
 
   return (
@@ -98,6 +99,9 @@ export default function LandingPage() {
                   </li>
                   <li>
                     <Link to={THEATER_MANAGEMENT}>Cụm rạp</Link>
+                  </li>
+                  <li>
+                    <Link to={PHONGCHIEU_MANAGEMENT}>Phòng chiếu</Link>
                   </li>
                 </ul>
               </li>

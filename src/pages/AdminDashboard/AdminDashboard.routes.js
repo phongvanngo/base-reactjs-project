@@ -9,6 +9,9 @@ const TheaterManagement = lazy(() =>
 const CumRapManagement = lazy(() =>
   import("./TheaterManagement/CumRapManagement")
 );
+const PhongChieuManagement = lazy(() =>
+  import("./TheaterManagement/PhongChieuManagement")
+);
 const TheaterSystemManagement = lazy(() =>
   import("./TheaterManagement/TheaterSystemManagement")
 );
@@ -25,6 +28,7 @@ const {
   SHOWTIME_MANAGEMENT,
   INTRODUCTION,
   THEATER_SYSTEM_MANAGEMENT,
+  PHONGCHIEU_MANAGEMENT,
 } = AdminRoutes;
 
 export default function AdminDashboardRoutes() {
@@ -34,6 +38,7 @@ export default function AdminDashboardRoutes() {
       <Route path={MOVIE_MANAGEMENT} component={MovieManagement} />
       <Route path={THEATER_MANAGEMENT} component={CumRapManagement} />
       <Route path={SHOWTIME_MANAGEMENT} component={ShowTimeManagement} />
+      <Route path={PHONGCHIEU_MANAGEMENT} component={PhongChieuManagement} />
       <Route
         path={THEATER_SYSTEM_MANAGEMENT}
         component={TheaterSystemManagement}
