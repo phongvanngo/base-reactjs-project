@@ -7,6 +7,7 @@ import commonReducer from "./commonSlice";
 import dialogReducer from "./dialogSlice";
 import theaterReducer from "./theaterSlice";
 import movieReducer from "./movieSlice";
+import cumRapReducer from "./cumRapSlice";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     dialog: dialogReducer,
     theater: theaterReducer,
     movie: movieReducer,
+    cumRap: cumRapReducer,
   },
 });

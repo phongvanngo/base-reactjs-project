@@ -26,6 +26,72 @@ export const listTheaterSystem = JSON.parse(`
     "logo": "https://picsum.photos/300/200"
   }]  
 `);
+
+export const listCumRap = () => {
+  let data = JSON.parse(`
+  [{
+    "id": 1,
+    "name": "Wolf-Champlin",
+    "information": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+    "theaterSystemName": "Mydo"
+  }, {
+    "id": 2,
+    "name": "Botsford, Dickens and Hand",
+    "information": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+    "theaterSystemName": "Wordify"
+  }, {
+    "id": 3,
+    "name": "Cruickshank LLC",
+    "information": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+    "theaterSystemName": "Yozio"
+  }, {
+    "id": 4,
+    "name": "Brown LLC",
+    "information": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+    "theaterSystemName": "Zooveo"
+  }, {
+    "id": 5,
+    "name": "Predovic and Sons",
+    "information": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+    "theaterSystemName": "Vitz"
+  }, {
+    "id": 6,
+    "name": "Hartmann-Crooks",
+    "information": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+    "theaterSystemName": "Brainsphere"
+  }, {
+    "id": 7,
+    "name": "Prosacco-Schmitt",
+    "information": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+    "theaterSystemName": "Dynabox"
+  }, {
+    "id": 8,
+    "name": "Erdman Group",
+    "information": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
+    "theaterSystemName": "Eamia"
+  }, {
+    "id": 9,
+    "name": "O'Hara-Larkin",
+    "information": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+    "theaterSystemName": "Skippad"
+  }, {
+    "id": 10,
+    "name": "Morissette, Mayer and Heathcote",
+    "information": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+    "theaterSystemName": "Browsezoom"
+  }]
+  `);
+
+  console.log(data);
+
+  for (let i = 0; i < data.length; i++) {
+    let r = Math.floor(Math.random() * 10);
+    data[i].theaterSystemName = listTheaterSystem[r]?.name;
+  }
+
+  return data;
+};
+
 export const listMovies = JSON.parse(`
 [{
   "id": 1,
