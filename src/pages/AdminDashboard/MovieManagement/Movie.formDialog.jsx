@@ -68,7 +68,6 @@ export default function MovieFormModal() {
 
   useEffect(() => {
     clearErrors("name");
-    clearErrors("alias");
     if (defaultData?.id) {
       const { name, image, trailer, description, premiereDay } = defaultData;
       setValue("name", name);

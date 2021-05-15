@@ -87,6 +87,7 @@ export const listCumRap = () => {
   for (let i = 0; i < data.length; i++) {
     let r = Math.floor(Math.random() * 10);
     data[i].theaterSystemName = listTheaterSystem[r]?.name;
+    data[i] = { ...data[i], theaterSystemId: listTheaterSystem[r]?.id };
   }
 
   return data;

@@ -1,15 +1,15 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { closeCumRapFormDialog } from "app/redux/dialogSlice";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { createCumRap, updateCumRap } from "app/redux/cumRapSlice";
+import FilterTheaterSystem from "./CumRap.formDialog.filterTheaterSystem";
 
 const schema = yup.object().shape({
   name: yup.string().required(),
-  alias: yup.string().required(),
 });
 
 export default function CumRapFormModal() {
@@ -28,15 +28,27 @@ export default function CumRapFormModal() {
     (state) => state.dialog.cumRapFormDialog
   );
 
+  let listTheaterSystem = useSelector(
+    (state) => state.theater.listTheaterSystem
+  );
+
+  const [selectedTheaterSystem, setSelectedTheaterSytem] = useState([]);
+
   console.log(defaultData);
 
   function onSaveData(data) {
+    let theaterSystemInfo = {
+      theaterSystemId: selectedTheaterSystem?.id,
+      theaterSystemName: selectedTheaterSystem?.name,
+    };
     if (defaultData?.id === null) {
       console.log(data);
-      dispatch(createCumRap(data));
+      dispatch(createCumRap({ ...data, ...theaterSystemInfo }));
       dispatch(closeCumRapFormDialog());
     } else {
-      dispatch(updateCumRap({ ...data, id: defaultData.id }));
+      dispatch(
+        updateCumRap({ ...data, ...theaterSystemInfo, id: defaultData.id })
+      );
       dispatch(closeCumRapFormDialog());
     }
   }
@@ -48,16 +60,17 @@ export default function CumRapFormModal() {
 
   useEffect(() => {
     clearErrors("name");
-    clearErrors("alias");
     if (defaultData?.id) {
-      const { name, alias, logo } = defaultData;
+      const { name, information, theaterSystemId } = defaultData;
       setValue("name", name);
-      setValue("alias", alias);
-      setValue("logo", logo);
+      setValue("information", information);
+      setSelectedTheaterSytem(
+        listTheaterSystem.find((element) => element.id === theaterSystemId) ||
+          {}
+      );
     } else {
       setValue("name", "");
-      setValue("alias", "");
-      setValue("logo", "");
+      setValue("information", "");
     }
   }, [setValue, defaultData]);
 
@@ -107,9 +120,7 @@ export default function CumRapFormModal() {
                 >
                   <div className="pr-5 pl-5 pt-4 pb-3 w-full flex justify-between">
                     <h1 className="font-normal">
-                      {defaultData?.id
-                        ? "Chỉnh sửa hệ thống rạp chiếu phim"
-                        : "Thêm hệ thống rạp chiếu"}
+                      {defaultData?.id ? "Chỉnh sửa cụm rạp" : "Thêm cụm rạp"}
                     </h1>
                     <button
                       onClick={handleCloseModal}
@@ -123,7 +134,7 @@ export default function CumRapFormModal() {
                   <div className="mt-2 p-6">
                     <div className="mb-8">
                       <span className="mb-2 flex flex-col font-extrabold">
-                        Tên hệ thống rạp chiếu
+                        Tên cụm rạp
                       </span>
                       <input
                         type="text"
@@ -145,33 +156,22 @@ export default function CumRapFormModal() {
                     </div>
                     <div className="mb-8">
                       <span className="font-extrabold mb-2 flex flex-col">
-                        Bí danh
+                        Hệ thống rạp
                       </span>
-                      <input
-                        type="text"
-                        {...register("alias", {})}
-                        className={
-                          "h-full w-full appearance-none rounded-full  w-30 py-4 px-6 leading-tight focus:outline-none border  text-gray-500" +
-                          (errors.alias
-                            ? " border-red-500"
-                            : " focus:border-indigo-500")
-                        }
+                      <FilterTheaterSystem
+                        listTheaterSystem={listTheaterSystem}
+                        selected={selectedTheaterSystem}
+                        setSelected={setSelectedTheaterSytem}
                       />
-                      {errors.alias ? (
-                        <span className="ml-2 mt-2 text-red-500">
-                          *Không được để trống
-                        </span>
-                      ) : (
-                        ""
-                      )}
                     </div>
+
                     <div className="mb-8">
                       <span className="font-extrabold mb-2 flex flex-col">
-                        Logo
+                        Thông tin
                       </span>
                       <input
                         type="text"
-                        {...register("logo", {})}
+                        {...register("information", {})}
                         className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
                       />
                     </div>
