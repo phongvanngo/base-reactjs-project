@@ -1,26 +1,23 @@
 import { filterArrayBySearchTerm } from "app/myLibrary/utilities";
-import { openTheaterSystemFormDialog } from "app/redux/dialogSlice";
-import { deleteTheaterSystem } from "app/redux/theaterSlice";
+import { openMovieFormDialog } from "app/redux/dialogSlice";
+import { deleteMovie } from "app/redux/movieSlice";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import MenuDropdown from "./TheaterSystem.table.menu";
+import MenuDropdown from "./Movie.table.menu";
 
-export default function TheaterSystemTable({ listTheaterSystem }) {
+export default function MovieTable({ listMovie }) {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
 
-  let currentListTheaterSystem = filterArrayBySearchTerm(
-    listTheaterSystem,
-    searchTerm
-  );
+  let currentListMovie = filterArrayBySearchTerm(listMovie, searchTerm);
 
-  const handleEditTheaterSystem = (theaterSystemData) => {
-    dispatch(openTheaterSystemFormDialog(theaterSystemData));
+  const handleEditMovie = (movieData) => {
+    dispatch(openMovieFormDialog(movieData));
   };
 
-  const handleDeleteTheaterSystem = (id) => {
+  const handleDeleteMovie = (id) => {
     if (window.confirm("Bạn có chắc chắn xóa")) {
-      dispatch(deleteTheaterSystem(id));
+      dispatch(deleteMovie(id));
     }
   };
 
@@ -42,41 +39,58 @@ export default function TheaterSystemTable({ listTheaterSystem }) {
           </div>
         </div>
         <div className="p-6 flex justify-between items-center h-20 border-b border-gray-200 rounded-t-3xl bg-white">
-          <h1 className="text-xl font-medium">Danh sách hệ thống rạp chiếu</h1>
+          <h1 className="text-xl font-medium">Danh sách phim</h1>
           <button
             onClick={() => {
-              dispatch(openTheaterSystemFormDialog({ id: null }));
+              dispatch(openMovieFormDialog({ id: null }));
             }}
             className="flex items-center bg-admin_color_1 appearance-none  rounded-full w-100 h-full  py-2 px-8 text-admin_color_2 leading-tight hover:bg-indigo-900 focus:outline-none"
           >
             <i className="bx bx-plus mr-2 align-middle block"></i>
-            <span>Thêm hệ thống rạp mới</span>
+            <span>Thêm phim mới</span>
           </button>
         </div>
         <div className="px-8 py-6 rounded-b-3xl bg-white shadow-sm">
-          <table className="table-auto w-full mb-10">
+          <table className="table-fixed w-full mb-10">
             <thead className="">
               <tr className="uppercase border-b border-gray-200 text-left text-base font-extrabold text-gray-500 tracking-widest">
-                <th scope="col" className="px-2 py-3 break-words">
+                <th scope="col" className="w-1/12 px-2 py-3 break-words">
                   <strong>#</strong>
                 </th>
-                <th scope="col" className="px-2 py-3 break-words">
-                  <strong>Tên hệ thống rạp</strong>
+                <th scope="col" className="w-2/12 px-2 py-3 break-words">
+                  <strong>Tên phim</strong>
                 </th>
-                <th scope="col" className="px-2 py-3 break-words">
-                  <strong>Logo</strong>
+                <th scope="col" className="w-2/12 px-2 py-3 break-words">
+                  <strong>Hình ảnh</strong>
                 </th>
-                <th scope="col" className="px-2 py-3 break-words">
-                  <strong>Bí danh</strong>
+                <th scope="col" className="w-1/12 px-2 py-3 break-words">
+                  <strong>Trailer</strong>
                 </th>
-                <th scope="col" className="px-2 py-3 break-words">
+                <th scope="col" className="w-2/12 px-2 py-3 break-words">
+                  <strong>Mô tả</strong>
+                </th>
+                <th scope="col" className="w-2/12 px-2 py-3 break-words">
+                  <strong>Ngày khởi chiếu</strong>
+                </th>
+                <th scope="col" className="w-1/12 px-2 py-3 break-words">
+                  <strong>Đánh giá</strong>
+                </th>
+                <th scope="col" className="w-1/12 px-2 py-3 break-words">
                   <strong>Action</strong>
                 </th>
               </tr>
             </thead>
             <tbody className="text-gray-500 font-normal">
-              {currentListTheaterSystem.map((theaterSystem, index) => {
-                const { logo, id, name, alias } = theaterSystem;
+              {currentListMovie.map((movie, index) => {
+                const {
+                  id,
+                  name,
+                  image,
+                  trailer,
+                  description,
+                  premiereDay,
+                  rate,
+                } = movie;
                 return (
                   <tr key={index} className="border-b border-gray-200">
                     <td className="px-2 py-4 text-gray-500 text-sm font-extrabold">
@@ -87,18 +101,23 @@ export default function TheaterSystemTable({ listTheaterSystem }) {
                       <img
                         className="h-20 w-20 rounded-lg"
                         alt="logo"
-                        src={logo}
+                        src={image}
                       />
                     </td>
 
-                    <td className="px-2 py-4">{alias}</td>
+                    <td className="px-2 py-4">
+                      <a href={trailer}>Link</a>
+                    </td>
+                    <td className="px-2 py-4">{description}</td>
+                    <td className="px-2 py-4">{premiereDay}</td>
+                    <td className="px-2 py-4">{rate}</td>
                     <td className="px-2 py-4">
                       <MenuDropdown
                         handleDelete={() => {
-                          handleDeleteTheaterSystem(id);
+                          handleDeleteMovie(id);
                         }}
                         handleEdit={() => {
-                          handleEditTheaterSystem(theaterSystem);
+                          handleEditMovie(movie);
                         }}
                       />
                     </td>
@@ -107,7 +126,7 @@ export default function TheaterSystemTable({ listTheaterSystem }) {
               })}
             </tbody>
           </table>
-          {currentListTheaterSystem.length === 0 ? (
+          {currentListMovie.length === 0 ? (
             <div className="text-center text-xl text-gray-500">
               <span>Không có rạp chiếu nào</span>
             </div>

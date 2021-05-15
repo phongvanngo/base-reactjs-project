@@ -1,21 +1,18 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { closeTheaterSystemFormDialog } from "app/redux/dialogSlice";
+import { closeMovieFormDialog } from "app/redux/dialogSlice";
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {
-  createTheaterSystem,
-  updateTheaterSystem,
-} from "app/redux/theaterSlice";
+import { createMovie, updateMovie } from "app/redux/movieSlice";
 
 const schema = yup.object().shape({
   name: yup.string().required(),
-  alias: yup.string().required(),
+  premiereDay: yup.string().required(),
 });
 
-export default function TheaterSystemFormModal() {
+export default function MovieFormModal() {
   let {
     register,
     handleSubmit,
@@ -28,7 +25,7 @@ export default function TheaterSystemFormModal() {
 
   const dispatch = useDispatch();
   const { isOpen, defaultData } = useSelector(
-    (state) => state.dialog.theaterSystemFormDialog
+    (state) => state.dialog.movieFormDialog
   );
 
   console.log(defaultData);
@@ -36,15 +33,15 @@ export default function TheaterSystemFormModal() {
   function onSaveData(data) {
     if (defaultData?.id === null) {
       console.log(data);
-      dispatch(createTheaterSystem(data));
-      dispatch(closeTheaterSystemFormDialog());
+      dispatch(createMovie(data));
+      dispatch(closeMovieFormDialog());
     } else {
-      dispatch(updateTheaterSystem({ ...data, id: defaultData.id }));
-      dispatch(closeTheaterSystemFormDialog());
+      dispatch(updateMovie({ ...data, id: defaultData.id }));
+      dispatch(closeMovieFormDialog());
     }
   }
   function handleCloseModal() {
-    dispatch(closeTheaterSystemFormDialog());
+    dispatch(closeMovieFormDialog());
   }
 
   console.log("render");
@@ -53,14 +50,18 @@ export default function TheaterSystemFormModal() {
     clearErrors("name");
     clearErrors("alias");
     if (defaultData?.id) {
-      const { name, alias, logo } = defaultData;
+      const { name, image, trailer, description, premiereDay } = defaultData;
       setValue("name", name);
-      setValue("alias", alias);
-      setValue("logo", logo);
+      setValue("image", image);
+      setValue("trailer", trailer);
+      setValue("description", description);
+      setValue("premiereDay", premiereDay);
     } else {
       setValue("name", "");
-      setValue("alias", "");
-      setValue("logo", "");
+      setValue("image", "");
+      setValue("trailer", "");
+      setValue("description", "");
+      setValue("premiereDay", "");
     }
   }, [setValue, defaultData]);
 
@@ -167,6 +168,26 @@ export default function TheaterSystemFormModal() {
                       ) : (
                         ""
                       )}
+                    </div>
+                    <div className="mb-8">
+                      <span className="font-extrabold mb-2 flex flex-col">
+                        Logo
+                      </span>
+                      <input
+                        type="text"
+                        {...register("logo", {})}
+                        className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
+                      />
+                    </div>
+                    <div className="mb-8">
+                      <span className="font-extrabold mb-2 flex flex-col">
+                        Logo
+                      </span>
+                      <input
+                        type="text"
+                        {...register("logo", {})}
+                        className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
+                      />
                     </div>
                     <div className="mb-8">
                       <span className="font-extrabold mb-2 flex flex-col">

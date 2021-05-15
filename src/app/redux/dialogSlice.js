@@ -5,6 +5,10 @@ const initialState = {
     isOpen: false,
     defaultData: null,
   },
+  movieFormDialog: {
+    isOpen: false,
+    defaultData: null,
+  },
   errorNotificationDialog: {
     isOpen: false,
     defaultData: { title: "" },
@@ -23,6 +27,14 @@ export const dialogSlice = createSlice({
       state.theaterSystemFormDialog.isOpen = false;
       state.theaterSystemFormDialog.defaultData = null;
     },
+    openMovieFormDialog: (state, action) => {
+      state.movieFormDialog.defaultData = action.payload;
+      state.movieFormDialog.isOpen = true;
+    },
+    closeMovieFormDialog: (state) => {
+      state.movieFormDialog.isOpen = false;
+      state.movieFormDialog.defaultData = null;
+    },
     openErrorNofificationDialog: (state, action) => {
       state.errorNotificationDialog.defaultData = action.payload;
       state.errorNotificationDialog.isOpen = true;
@@ -39,6 +51,8 @@ export const {
   closeErrorNotificationDialog,
   openTheaterSystemFormDialog,
   closeTheaterSystemFormDialog,
+  openMovieFormDialog,
+  closeMovieFormDialog,
 } = dialogSlice.actions;
 
 export default dialogSlice.reducer;

@@ -102,10 +102,12 @@ export default function LandingPage() {
                 </ul>
               </li>
               <li className="menu-item">
-                <div className="menu-item__title">
-                  <i className="bx bx-film menu-item__title__icon"></i>
-                  <span className="menu-item__title__name">Quản lý phim</span>
-                </div>
+                <Link to={MOVIE_MANAGEMENT}>
+                  <div className="menu-item__title">
+                    <i className="bx bx-film menu-item__title__icon"></i>
+                    <span className="menu-item__title__name">Quản lý phim</span>
+                  </div>
+                </Link>
               </li>
               <li className="menu-item">
                 <div className="menu-item__title">
