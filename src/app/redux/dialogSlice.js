@@ -13,6 +13,10 @@ const initialState = {
     isOpen: false,
     defaultData: null,
   },
+  phongChieuFormDialog: {
+    isOpen: false,
+    defaultData: null,
+  },
   errorNotificationDialog: {
     isOpen: false,
     defaultData: { title: "" },
@@ -47,6 +51,14 @@ export const dialogSlice = createSlice({
       state.cumRapFormDialog.isOpen = false;
       state.cumRapFormDialog.defaultData = null;
     },
+    openPhongChieuFormDialog: (state, action) => {
+      state.cumRapFormDialog.defaultData = action.payload;
+      state.cumRapFormDialog.isOpen = true;
+    },
+    closePhongChieuFormDialog: (state) => {
+      state.cumRapFormDialog.isOpen = false;
+      state.cumRapFormDialog.defaultData = null;
+    },
     openErrorNofificationDialog: (state, action) => {
       state.errorNotificationDialog.defaultData = action.payload;
       state.errorNotificationDialog.isOpen = true;
@@ -67,6 +79,8 @@ export const {
   closeMovieFormDialog,
   openCumRapFormDialog,
   closeCumRapFormDialog,
+  openPhongChieuFormDialog,
+  closePhongChieuFormDialog,
 } = dialogSlice.actions;
 
 export default dialogSlice.reducer;

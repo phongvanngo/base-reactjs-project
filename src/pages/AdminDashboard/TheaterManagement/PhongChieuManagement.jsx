@@ -1,26 +1,28 @@
 import { changeAdminNavbarTitle } from "app/redux/commonSlice";
-import { fetchListCumRap } from "app/redux/cumRapSlice";
+import { fetchListPhongChieu } from "app/redux/phongChieuSlice";
 import { fetchListTheaterSystem } from "app/redux/theaterSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CumRapTable from "./CumRap.table";
-import CumRapFormModal from "./CumRap.formDialog";
+import PhongChieuTable from "./PhongChieu.table";
+import PhongChieuFormModal from "./PhongChieu.formDialog";
 
-export default function CumRapManagement() {
+export default function PhongChieuManagement() {
   const dispatch = useDispatch();
-  const listCumRap = useSelector((state) => state.cumRap.listCumRap);
+  const listPhongChieu = useSelector(
+    (state) => state.phongChieu.listPhongChieu
+  );
 
   useEffect(() => {
     dispatch(changeAdminNavbarTitle("Quản lý cụm rạp"));
-    dispatch(fetchListCumRap({}));
+    dispatch(fetchListPhongChieu({}));
     dispatch(fetchListTheaterSystem({}));
   }, [dispatch]);
 
   return (
     <div>
-      <CumRapFormModal />
+      <PhongChieuFormModal />
       <div className="pt-20">
-        <CumRapTable listCumRap={listCumRap} />
+        <PhongChieuTable listPhongChieu={listPhongChieu} />
       </div>
     </div>
   );

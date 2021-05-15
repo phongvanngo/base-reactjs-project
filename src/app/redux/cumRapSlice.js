@@ -34,6 +34,35 @@ export const fetchListCumRap = createAsyncThunk(
     }
   }
 );
+export const fetchListCumRapInTheaterSystem = createAsyncThunk(
+  "cumRap/fetchListCumRapInTheaterSystem",
+  async (payload, thunkApi) => {
+    const { theaterSystemId } = payload;
+    const { dispatch } = thunkApi;
+    dispatch(startLoading());
+    try {
+      const response = await cumRapApi.getListCumRapInTheaterSytem(
+        theaterSystemId
+      );
+      console.log(response);
+      switch (response.status) {
+        case 200:
+          dispatch(stopLoading());
+          return response.data;
+        case 401:
+          throw new Error("Unauthorize");
+        case 400:
+          console.log("hi");
+          throw new Error("");
+        default:
+          throw new Error("Error");
+      }
+    } catch (error) {
+      dispatch(stopLoading());
+      return null;
+    }
+  }
+);
 export const createCumRap = createAsyncThunk(
   "cumRap/createCumRap",
   async (payload, thunkApi) => {
@@ -134,6 +163,11 @@ export const cumRapSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchListCumRap.fulfilled, (state, action) => {
+        if (action.payload === null) return;
+        const { listCumRap } = action.payload;
+        state.listCumRap = listCumRap;
+      })
+      .addCase(fetchListCumRapInTheaterSystem.fulfilled, (state, action) => {
         if (action.payload === null) return;
         const { listCumRap } = action.payload;
         state.listCumRap = listCumRap;

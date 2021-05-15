@@ -1,18 +1,19 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { closeCumRapFormDialog } from "app/redux/dialogSlice";
+import { closePhongChieuFormDialog } from "app/redux/dialogSlice";
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { createCumRap, updateCumRap } from "app/redux/cumRapSlice";
-import FilterTheaterSystem from "./CumRap.formDialog.filterTheaterSystem";
+import { createPhongChieu, updatePhongChieu } from "app/redux/phongChieuSlice";
+import FilterTheaterSystem from "./PhongChieu.formDialog.filterTheaterSystem";
+import FilterCumRap from "./PhongChieu.formDialog.filterCumRap";
 
 const schema = yup.object().shape({
   name: yup.string().required(),
 });
 
-export default function CumRapFormModal() {
+export default function PhongChieuFormModal() {
   let {
     register,
     handleSubmit,
@@ -25,14 +26,16 @@ export default function CumRapFormModal() {
 
   const dispatch = useDispatch();
   const { isOpen, defaultData } = useSelector(
-    (state) => state.dialog.cumRapFormDialog
+    (state) => state.dialog.phongChieuFormDialog
   );
 
   let listTheaterSystem = useSelector(
     (state) => state.theater.listTheaterSystem
   );
+  let listCumRap = useSelector((state) => state.cumRap.listCumRap);
 
   const [selectedTheaterSystem, setSelectedTheaterSytem] = useState([]);
+  const [selectedCumRap, setSelectedCumRap] = useState([]);
 
   console.log(defaultData);
 
@@ -43,17 +46,17 @@ export default function CumRapFormModal() {
     };
     if (defaultData?.id === null) {
       console.log(data);
-      dispatch(createCumRap({ ...data, ...theaterSystemInfo }));
-      dispatch(closeCumRapFormDialog());
+      dispatch(createPhongChieu({ ...data, ...theaterSystemInfo }));
+      dispatch(closePhongChieuFormDialog());
     } else {
       dispatch(
-        updateCumRap({ ...data, ...theaterSystemInfo, id: defaultData.id })
+        updatePhongChieu({ ...data, ...theaterSystemInfo, id: defaultData.id })
       );
-      dispatch(closeCumRapFormDialog());
+      dispatch(closePhongChieuFormDialog());
     }
   }
   function handleCloseModal() {
-    dispatch(closeCumRapFormDialog());
+    dispatch(closePhongChieuFormDialog());
   }
 
   console.log("render");

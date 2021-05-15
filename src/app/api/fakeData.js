@@ -27,7 +27,7 @@ export const listTheaterSystem = JSON.parse(`
   }]  
 `);
 
-export const listCumRap = () => {
+export const listCumRap = (theaterSystemId) => {
   let data = JSON.parse(`
   [{
     "id": 1,
@@ -82,18 +82,21 @@ export const listCumRap = () => {
   }]
   `);
 
-  console.log(data);
-
   for (let i = 0; i < data.length; i++) {
     let r = (Math.floor(Math.random() * 10) + 1) % 5;
     data[i].theaterSystemName = listTheaterSystem[r]?.name;
     data[i] = { ...data[i], theaterSystemId: listTheaterSystem[r]?.id };
   }
 
+  console.log("fsfe", theaterSystemId);
+  if (theaterSystemId) {
+    data = data.filter((e) => e.theaterSystemId === theaterSystemId);
+  }
+
   return data;
 };
 
-export const listPhongChieu = () => {
+export const listPhongChieu = (cumRapId) => {
   let data = JSON.parse(`
   [{
     "id": 1,
@@ -308,11 +311,15 @@ export const listPhongChieu = () => {
   }]
   
   `);
-
-  for (let i = 0; i < data.lenght; i++) {
-    let cumRap = listCumRap.find((e) => e.id === data[i].cumRapId);
-    data[i] = { ...data, cumRapName: cumRap?.name };
+  console.log(data.length);
+  for (let index = 0; index < 30; index++) {
+    let cumRap = listCumRap().find((e) => e.id === data[index].cumRapId);
+    data[index] = { ...data[index], cumRapName: cumRap?.name };
   }
+  if (cumRapId) {
+    data.filter((e) => e.cumRapId === cumRapId);
+  }
+  return data;
 };
 
 export const listMovies = JSON.parse(`

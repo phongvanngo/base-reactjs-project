@@ -15,6 +15,7 @@ const phongChieuApi = {
       },
       timeOut: 1000,
     });
+    console.log(response);
     return response;
   },
   postPhongChieu: async (phongChieu) => {

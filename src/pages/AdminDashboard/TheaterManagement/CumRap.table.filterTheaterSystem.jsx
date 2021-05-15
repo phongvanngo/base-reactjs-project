@@ -1,14 +1,22 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchListCumRapInTheaterSystem } from "app/redux/cumRapSlice";
 
 export default function FilterTheaterSystem() {
+  const dispatch = useDispatch();
+
   let listTheaterSystem = useSelector(
     (state) => state.theater.listTheaterSystem
   );
   listTheaterSystem = [{ name: "Tất cả", id: null }, ...listTheaterSystem];
   const [selected, setSelected] = useState(listTheaterSystem[0]);
+
+  useEffect(() => {
+    dispatch(fetchListCumRapInTheaterSystem({ theaterSystemId: selected?.id }));
+  }, [selected]);
+
   return (
     <div className="mt-5 flex items-center">
       <div className="mr-5">

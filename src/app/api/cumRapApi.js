@@ -17,6 +17,20 @@ const cumRapApi = {
     });
     return response;
   },
+  getListCumRapInTheaterSytem: async (theaterSytemId) => {
+    console.log(listCumRap);
+    let response = await fakeApi({
+      // request: loginInfo,
+      response: {
+        status: 200,
+        data: {
+          listCumRap: listCumRap(theaterSytemId),
+        },
+      },
+      timeOut: 1000,
+    });
+    return response;
+  },
   postCumRap: async (cumRap) => {
     let response = await fakeApi({
       // request: loginInfo,

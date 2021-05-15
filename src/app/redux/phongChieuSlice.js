@@ -16,6 +16,7 @@ export const fetchListPhongChieu = createAsyncThunk(
     dispatch(startLoading());
     try {
       const response = await phongChieuApi.getListPhongChieu();
+
       switch (response.status) {
         case 200:
           dispatch(stopLoading());
@@ -30,6 +31,7 @@ export const fetchListPhongChieu = createAsyncThunk(
       }
     } catch (error) {
       dispatch(stopLoading());
+      console.log(error);
       return null;
     }
   }
