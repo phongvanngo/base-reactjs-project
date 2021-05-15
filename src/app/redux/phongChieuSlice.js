@@ -36,6 +36,34 @@ export const fetchListPhongChieu = createAsyncThunk(
     }
   }
 );
+export const fetchListPhongChieuInCumRap = createAsyncThunk(
+  "phongChieu/fetchListPhongChieuInCumRap",
+  async (payload, thunkApi) => {
+    const { cumRapId } = payload;
+    const { dispatch } = thunkApi;
+    dispatch(startLoading());
+    try {
+      const response = await phongChieuApi.getListPhongChieuInCumRap(cumRapId);
+
+      switch (response.status) {
+        case 200:
+          dispatch(stopLoading());
+          return response.data;
+        case 401:
+          throw new Error("Unauthorize");
+        case 400:
+          console.log("hi");
+          throw new Error("");
+        default:
+          throw new Error("Error");
+      }
+    } catch (error) {
+      dispatch(stopLoading());
+      console.log(error);
+      return null;
+    }
+  }
+);
 export const createPhongChieu = createAsyncThunk(
   "phongChieu/createPhongChieu",
   async (payload, thunkApi) => {
@@ -136,6 +164,11 @@ export const phongChieuSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchListPhongChieu.fulfilled, (state, action) => {
+        if (action.payload === null) return;
+        const { listPhongChieu } = action.payload;
+        state.listPhongChieu = listPhongChieu;
+      })
+      .addCase(fetchListPhongChieuInCumRap.fulfilled, (state, action) => {
         if (action.payload === null) return;
         const { listPhongChieu } = action.payload;
         state.listPhongChieu = listPhongChieu;

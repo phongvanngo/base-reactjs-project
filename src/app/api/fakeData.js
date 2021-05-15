@@ -31,64 +31,81 @@ export const listCumRap = (theaterSystemId) => {
   let data = JSON.parse(`
   [{
     "id": 1,
-    "name": "Wolf-Champlin",
-    "information": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
-    "theaterSystemName": "Mydo"
+    "name": "Berge Group",
+    "information": "Fusce consequat. Nulla nisl. Nunc nisl.",
+    "theaterSystemName": "Centimia",
+    "theaterSystemId": 1
   }, {
     "id": 2,
-    "name": "Botsford, Dickens and Hand",
-    "information": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-    "theaterSystemName": "Wordify"
+    "name": "Zulauf, Feil and Ullrich",
+    "information": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+    "theaterSystemName": "Jaloo",
+    "theaterSystemId": 3
   }, {
     "id": 3,
-    "name": "Cruickshank LLC",
-    "information": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-    "theaterSystemName": "Yozio"
+    "name": "Boyer and Sons",
+    "information": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+    "theaterSystemName": "Vitz",
+    "theaterSystemId": 2
   }, {
     "id": 4,
-    "name": "Brown LLC",
-    "information": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "theaterSystemName": "Zooveo"
+    "name": "Pagac LLC",
+    "information": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+    "theaterSystemName": "Brainverse",
+    "theaterSystemId": 2
   }, {
     "id": 5,
-    "name": "Predovic and Sons",
-    "information": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-    "theaterSystemName": "Vitz"
+    "name": "Sipes, Bahringer and Waters",
+    "information": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+    "theaterSystemName": "Bluejam",
+    "theaterSystemId": 3
   }, {
     "id": 6,
-    "name": "Hartmann-Crooks",
-    "information": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
-    "theaterSystemName": "Brainsphere"
+    "name": "Conroy-Glover",
+    "information": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+    "theaterSystemName": "Twinder",
+    "theaterSystemId": 3
   }, {
     "id": 7,
-    "name": "Prosacco-Schmitt",
-    "information": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-    "theaterSystemName": "Dynabox"
+    "name": "Kertzmann Inc",
+    "information": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+    "theaterSystemName": "Dazzlesphere",
+    "theaterSystemId": 4
   }, {
     "id": 8,
-    "name": "Erdman Group",
-    "information": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
-    "theaterSystemName": "Eamia"
+    "name": "Jacobi and Sons",
+    "information": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+    "theaterSystemName": "Twimbo",
+    "theaterSystemId": 2
   }, {
     "id": 9,
-    "name": "O'Hara-Larkin",
-    "information": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-    "theaterSystemName": "Skippad"
+    "name": "Pfeffer-Dicki",
+    "information": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+    "theaterSystemName": "Twimbo",
+    "theaterSystemId": 4
   }, {
     "id": 10,
-    "name": "Morissette, Mayer and Heathcote",
-    "information": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
-    "theaterSystemName": "Browsezoom"
+    "name": "McGlynn Inc",
+    "information": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+    "theaterSystemName": "Skimia",
+    "theaterSystemId": 2
   }]
   `);
 
   for (let i = 0; i < data.length; i++) {
-    let r = (Math.floor(Math.random() * 10) + 1) % 5;
-    data[i].theaterSystemName = listTheaterSystem[r]?.name;
-    data[i] = { ...data[i], theaterSystemId: listTheaterSystem[r]?.id };
+    let theaterSystem = listTheaterSystem.find(
+      (e) => e.id === data[i].theaterSystemId
+    );
+
+    data[i] = {
+      ...data[i],
+      theaterSystemName: theaterSystem.name,
+      theaterSystemId: theaterSystem.id,
+    };
   }
 
-  console.log("fsfe", theaterSystemId);
+  console.log(data);
+
   if (theaterSystemId) {
     data = data.filter((e) => e.theaterSystemId === theaterSystemId);
   }
@@ -311,13 +328,12 @@ export const listPhongChieu = (cumRapId) => {
   }]
   
   `);
-  console.log(data.length);
-  for (let index = 0; index < 30; index++) {
+  for (let index = 0; index < data.length; index++) {
     let cumRap = listCumRap().find((e) => e.id === data[index].cumRapId);
     data[index] = { ...data[index], cumRapName: cumRap?.name };
   }
   if (cumRapId) {
-    data.filter((e) => e.cumRapId === cumRapId);
+    data = data.filter((e) => e.cumRapId === cumRapId);
   }
   return data;
 };

@@ -1,20 +1,29 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchListCumRapInTheaterSystem } from "app/redux/cumRapSlice";
 
 export default function FilterTheaterSystem() {
+  const dispatch = useDispatch();
   let listTheaterSystem = useSelector(
     (state) => state.theater.listTheaterSystem
   );
   listTheaterSystem = [{ name: "Tất cả", id: null }, ...listTheaterSystem];
   const [selected, setSelected] = useState(listTheaterSystem[0]);
+
   return (
     <div className="mt-5 mr-10 flex items-center">
       <div className="mr-5">
         <span>Chọn hệ thống rạp</span>
       </div>
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox
+        value={selected}
+        onChange={(e) => {
+          setSelected(e);
+          dispatch(fetchListCumRapInTheaterSystem({ theaterSystemId: e?.id }));
+        }}
+      >
         <div className="relative mt-1">
           <Listbox.Button className=" relative w-60 py-2 pl-3 pr-10 text-left bg-white rounded-2xl shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
             <span className="block truncate">{selected.name}</span>

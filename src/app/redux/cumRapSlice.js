@@ -29,6 +29,7 @@ export const fetchListCumRap = createAsyncThunk(
           throw new Error("Error");
       }
     } catch (error) {
+      console.log(error);
       dispatch(stopLoading());
       return null;
     }
@@ -159,7 +160,11 @@ export const deleteCumRap = createAsyncThunk(
 export const cumRapSlice = createSlice({
   name: "cumRap",
   initialState,
-  reducers: {},
+  reducers: {
+    setEmtyListCumRap: (state) => {
+      state.listCumRap = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchListCumRap.fulfilled, (state, action) => {
@@ -208,6 +213,6 @@ export const cumRapSlice = createSlice({
   },
 });
 
-export const {} = cumRapSlice.actions;
+export const { setEmtyListCumRap } = cumRapSlice.actions;
 
 export default cumRapSlice.reducer;

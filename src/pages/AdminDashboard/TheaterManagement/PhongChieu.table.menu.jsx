@@ -1,7 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
-export default function MenuCumRapTable({ handleEdit, handleDelete }) {
+export default function MenuPhongChieuTable({ handleEdit, handleDelete }) {
   return (
     <div>
       <Menu as="div" className="relative inline-block text-left">

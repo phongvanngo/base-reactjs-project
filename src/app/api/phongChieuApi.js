@@ -18,6 +18,21 @@ const phongChieuApi = {
     console.log(response);
     return response;
   },
+  getListPhongChieuInCumRap: async (cumRapId) => {
+    console.log(listPhongChieu);
+    let response = await fakeApi({
+      // request: loginInfo,
+      response: {
+        status: 200,
+        data: {
+          listPhongChieu: listPhongChieu(cumRapId),
+        },
+      },
+      timeOut: 1000,
+    });
+    console.log(response);
+    return response;
+  },
   postPhongChieu: async (phongChieu) => {
     let response = await fakeApi({
       // request: loginInfo,

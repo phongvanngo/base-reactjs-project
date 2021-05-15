@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PhongChieuTable from "./PhongChieu.table";
 import PhongChieuFormModal from "./PhongChieu.formDialog";
+import { setEmtyListCumRap } from "app/redux/cumRapSlice";
 
 export default function PhongChieuManagement() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export default function PhongChieuManagement() {
     dispatch(changeAdminNavbarTitle("Quản lý cụm rạp"));
     dispatch(fetchListPhongChieu({}));
     dispatch(fetchListTheaterSystem({}));
+    dispatch(setEmtyListCumRap());
   }, [dispatch]);
 
   return (
