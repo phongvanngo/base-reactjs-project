@@ -1,4 +1,7 @@
-import { filterArrayBySearchTerm } from "app/myLibrary/utilities";
+import {
+  convertDateTime,
+  filterArrayBySearchTerm,
+} from "app/myLibrary/utilities";
 import { openMovieFormDialog } from "app/redux/dialogSlice";
 import { deleteMovie } from "app/redux/movieSlice";
 import React, { useState } from "react";
@@ -109,7 +112,9 @@ export default function MovieTable({ listMovie }) {
                       <a href={trailer}>Link</a>
                     </td>
                     <td className="px-2 py-4">{description}</td>
-                    <td className="px-2 py-4">{premiereDay}</td>
+                    <td className="px-2 py-4">
+                      {convertDateTime(premiereDay)}
+                    </td>
                     <td className="px-2 py-4">{rate}</td>
                     <td className="px-2 py-4">
                       <MenuDropdown

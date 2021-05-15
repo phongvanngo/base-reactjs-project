@@ -5,14 +5,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import React, { forwardRef, useState } from "react";
 import { createMovie, updateMovie } from "app/redux/movieSlice";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+const CustomDatePickerInput = forwardRef(
+  ({ value, onClick, onChange }, ref) => (
+    <input
+      className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
+      onClick={onClick}
+      ref={ref}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    />
+  )
+);
 
 const schema = yup.object().shape({
   name: yup.string().required(),
-  premiereDay: yup.string().required(),
 });
 
 export default function MovieFormModal() {
+  const dispatch = useDispatch();
   let {
     register,
     handleSubmit,
@@ -23,20 +38,25 @@ export default function MovieFormModal() {
     resolver: yupResolver(schema),
   });
 
-  const dispatch = useDispatch();
   const { isOpen, defaultData } = useSelector(
     (state) => state.dialog.movieFormDialog
   );
 
-  console.log(defaultData);
+  const [startDate, setStartDate] = useState(new Date());
 
   function onSaveData(data) {
     if (defaultData?.id === null) {
       console.log(data);
-      dispatch(createMovie(data));
+      dispatch(createMovie({ ...data, premiereDay: startDate.toDateString() }));
       dispatch(closeMovieFormDialog());
     } else {
-      dispatch(updateMovie({ ...data, id: defaultData.id }));
+      dispatch(
+        updateMovie({
+          ...data,
+          premiereDay: startDate.toDateString(),
+          id: defaultData.id,
+        })
+      );
       dispatch(closeMovieFormDialog());
     }
   }
@@ -55,13 +75,13 @@ export default function MovieFormModal() {
       setValue("image", image);
       setValue("trailer", trailer);
       setValue("description", description);
-      setValue("premiereDay", premiereDay);
+      setStartDate(new Date(premiereDay));
     } else {
       setValue("name", "");
       setValue("image", "");
       setValue("trailer", "");
       setValue("description", "");
-      setValue("premiereDay", "");
+      setStartDate(new Date());
     }
   }, [setValue, defaultData]);
 
@@ -147,56 +167,48 @@ export default function MovieFormModal() {
                         ""
                       )}
                     </div>
+
                     <div className="mb-8">
                       <span className="font-extrabold mb-2 flex flex-col">
-                        Bí danh
+                        Hình ảnh
                       </span>
                       <input
                         type="text"
-                        {...register("alias", {})}
-                        className={
-                          "h-full w-full appearance-none rounded-full  w-30 py-4 px-6 leading-tight focus:outline-none border  text-gray-500" +
-                          (errors.alias
-                            ? " border-red-500"
-                            : " focus:border-indigo-500")
-                        }
+                        {...register("image", {})}
+                        className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
                       />
-                      {errors.alias ? (
-                        <span className="ml-2 mt-2 text-red-500">
-                          *Không được để trống
-                        </span>
-                      ) : (
-                        ""
-                      )}
                     </div>
+
                     <div className="mb-8">
                       <span className="font-extrabold mb-2 flex flex-col">
-                        Logo
+                        Trailer url
                       </span>
                       <input
                         type="text"
-                        {...register("logo", {})}
+                        {...register("trailer", {})}
                         className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
                       />
                     </div>
                     <div className="mb-8">
                       <span className="font-extrabold mb-2 flex flex-col">
-                        Logo
+                        Mô tả
                       </span>
                       <input
                         type="text"
-                        {...register("logo", {})}
+                        {...register("description", {})}
                         className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
                       />
                     </div>
+
                     <div className="mb-8">
                       <span className="font-extrabold mb-2 flex flex-col">
-                        Logo
+                        Ngày khởi chiếu
                       </span>
-                      <input
-                        type="text"
-                        {...register("logo", {})}
-                        className="h-full w-full appearance-none rounded-full border w-30 py-4 px-6 leading-tight focus:outline-none focus:border-indigo-500 text-gray-500"
+                      <DatePicker
+                        dateFormat="dd/MM/yyyy"
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        customInput={<CustomDatePickerInput />}
                       />
                     </div>
                   </div>

@@ -38,3 +38,14 @@ export function filterArrayBySearchTerm(myArray, searchTerm) {
   }
   return res;
 }
+
+export function convertDateTime(myDate) {
+  // date to dd/mm/yyyy
+  let date = new Date(myDate);
+  console.log(date);
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const year = date.getFullYear();
+  const output = day + "/" + month + "/" + year;
+  return output;
+}

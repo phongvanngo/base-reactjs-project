@@ -3,6 +3,7 @@ import React from "react";
 import AppRoutes from "routes";
 import "./App.css";
 import ErrorNotificationDialog from "common/Notification/ErrorNotification.dialog";
+import MyDatePicker from "common/DatePicker/MyDatePicker";
 
 function App() {
   return (

@@ -33,7 +33,7 @@ export const listMovies = JSON.parse(`
   "image": "https://picsum.photos/200/300",
   "trailer": "https://youtu.be/TcMBFSGVi1c",
   "description": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
-  "premiereDay": "25/1/2021",
+  "premiereDay": "1/25/2021",
   "rate": 4.8
 }, {
   "id": 2,
@@ -49,7 +49,7 @@ export const listMovies = JSON.parse(`
   "image": "https://picsum.photos/400/200",
   "trailer": "https://youtu.be/TcMBFSGVi1c",
   "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-  "premiereDay": "29/7/2020",
+  "premiereDay": "7/29/2020",
   "rate": 6.1
 }, {
   "id": 4,
@@ -57,7 +57,7 @@ export const listMovies = JSON.parse(`
   "image": "https://picsum.photos/400/300",
   "trailer": "https://youtu.be/TcMBFSGVi1c",
   "description": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-  "premiereDay": "28/5/2020",
+  "premiereDay": "5/28/2020",
   "rate": 4.6
 }, {
   "id": 5,
@@ -73,7 +73,7 @@ export const listMovies = JSON.parse(`
   "image": "https://picsum.photos/400/400",
   "trailer": "https://youtu.be/TcMBFSGVi1c",
   "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-  "premiereDay": "27/5/2020",
+  "premiereDay": "5/27/2020",
   "rate": 7.2
 }, {
   "id": 7,
@@ -89,7 +89,7 @@ export const listMovies = JSON.parse(`
   "image": "https://picsum.photos/300/400",
   "trailer": "https://youtu.be/TcMBFSGVi1c",
   "description": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-  "premiereDay": "24/8/2020",
+  "premiereDay": "8/24/2020",
   "rate": 9.5
 }, {
   "id": 9,
@@ -105,7 +105,7 @@ export const listMovies = JSON.parse(`
   "image": "https://picsum.photos/200/200",
   "trailer": "https://youtu.be/TcMBFSGVi1c",
   "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-  "premiereDay": "29/9/2020",
+  "premiereDay": "9/29/2020",
   "rate": 4.5
 }]
 `);
