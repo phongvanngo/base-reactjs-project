@@ -4,6 +4,7 @@ import { deleteCumRap } from "app/redux/cumRapSlice";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import MenuDropdown from "./CumRap.table.menu";
+import FilterTheaterSystem from "./CumRap.table.filterTheaterSystem";
 
 export default function CumRapTable({ listCumRap }) {
   const dispatch = useDispatch();
@@ -38,17 +39,20 @@ export default function CumRapTable({ listCumRap }) {
             </div>
           </div>
         </div>
-        <div className="p-6 flex justify-between items-center h-20 border-b border-gray-200 rounded-t-3xl bg-white">
-          <h1 className="text-xl font-medium">Danh sách cụm rạp</h1>
-          <button
-            onClick={() => {
-              dispatch(openCumRapFormDialog({ id: null }));
-            }}
-            className="flex items-center bg-admin_color_1 appearance-none  rounded-full w-100 h-full  py-2 px-8 text-admin_color_2 leading-tight hover:bg-indigo-900 focus:outline-none"
-          >
-            <i className="bx bx-plus mr-2 align-middle block"></i>
-            <span>Thêm cụm rạp mới</span>
-          </button>
+        <div className="p-6  min-h-20 border-b border-gray-200 rounded-t-3xl bg-white">
+          <div className="flex justify-between items-center">
+            <h1 className="text-xl font-medium">Danh sách cụm rạp</h1>
+            <button
+              onClick={() => {
+                dispatch(openCumRapFormDialog({ id: null }));
+              }}
+              className="flex items-center bg-admin_color_1 appearance-none  rounded-full w-100 h-full  py-2 px-8 text-admin_color_2 leading-tight hover:bg-indigo-900 focus:outline-none"
+            >
+              <i className="bx bx-plus mr-2 align-middle block"></i>
+              <span>Thêm cụm rạp mới</span>
+            </button>
+          </div>
+          <FilterTheaterSystem />
         </div>
         <div className="px-8 py-6 rounded-b-3xl bg-white shadow-sm">
           <table className="table-fixed w-full mb-10">

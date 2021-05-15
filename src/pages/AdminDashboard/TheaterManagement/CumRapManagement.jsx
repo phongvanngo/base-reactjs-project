@@ -1,5 +1,6 @@
 import { changeAdminNavbarTitle } from "app/redux/commonSlice";
 import { fetchListCumRap } from "app/redux/cumRapSlice";
+import { fetchListTheaterSystem } from "app/redux/theaterSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CumRapTable from "./CumRap.table";
@@ -12,6 +13,7 @@ export default function CumRapManagement() {
   useEffect(() => {
     dispatch(changeAdminNavbarTitle("Quản lý cụm rạp"));
     dispatch(fetchListCumRap({}));
+    dispatch(fetchListTheaterSystem({}));
   }, [dispatch]);
 
   return (
