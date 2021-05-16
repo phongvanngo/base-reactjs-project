@@ -24,7 +24,7 @@ const cumRapApi = {
       response: {
         status: 200,
         data: {
-          listCumRap: listCumRap(theaterSytemId),
+          listCumRap: theaterSytemId ? listCumRap(theaterSytemId) : [],
         },
       },
       timeOut: 1000,

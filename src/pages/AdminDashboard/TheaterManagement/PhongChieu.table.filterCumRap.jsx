@@ -1,15 +1,25 @@
-import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+import {
+  activeCreatePhongChieu,
+  deactiveCreatePhongChieu,
+  fetchListPhongChieuInCumRap,
+  setEmtyListPhongChieu,
+  setSelectedCumRap,
+} from "app/redux/phongChieuSlice";
+import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function FilterTheaterSystem() {
   let listCumRap = useSelector((state) => state.cumRap.listCumRap);
+  const dispatch = useDispatch();
 
   const [selected, setSelected] = useState({});
 
   useEffect(() => {
     setSelected({});
+    dispatch(setEmtyListPhongChieu());
+    dispatch(deactiveCreatePhongChieu());
   }, [listCumRap, setSelected]);
 
   return (
@@ -17,7 +27,16 @@ export default function FilterTheaterSystem() {
       <div className="mr-5">
         <span>Chọn cụm rạp</span>
       </div>
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox
+        value={selected}
+        onChange={(cumRap) => {
+          console.log("change selected");
+          setSelected(cumRap);
+          dispatch(setSelectedCumRap({ cumRapId: cumRap.id }));
+          dispatch(activeCreatePhongChieu());
+          dispatch(fetchListPhongChieuInCumRap({ cumRapId: cumRap.id }));
+        }}
+      >
         <div className="relative mt-1">
           <Listbox.Button className="h-10 relative w-60 py-2 pl-3 pr-10 text-left bg-white rounded-2xl shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
             <span className="block truncate">{selected.name}</span>

@@ -104,8 +104,6 @@ export const listCumRap = (theaterSystemId) => {
     };
   }
 
-  console.log(data);
-
   if (theaterSystemId) {
     data = data.filter((e) => e.theaterSystemId === theaterSystemId);
   }

@@ -5,6 +5,8 @@ import { startLoading, stopLoading } from "./loadingSlice";
 
 const initialState = {
   listPhongChieu: [],
+  selectedCumRap: null,
+  isActiveCreatePhongChieu: false,
 };
 
 export const fetchListPhongChieu = createAsyncThunk(
@@ -160,7 +162,20 @@ export const deletePhongChieu = createAsyncThunk(
 export const phongChieuSlice = createSlice({
   name: "phongChieu",
   initialState,
-  reducers: {},
+  reducers: {
+    setEmtyListPhongChieu: (state) => {
+      state.listPhongChieu = [];
+    },
+    setSelectedCumRap: (state, action) => {
+      state.selectedCumRap = action.payload;
+    },
+    activeCreatePhongChieu: (state) => {
+      state.isActiveCreatePhongChieu = true;
+    },
+    deactiveCreatePhongChieu: (state) => {
+      state.isActiveCreatePhongChieu = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchListPhongChieu.fulfilled, (state, action) => {
@@ -209,6 +224,11 @@ export const phongChieuSlice = createSlice({
   },
 });
 
-export const {} = phongChieuSlice.actions;
+export const {
+  activeCreatePhongChieu,
+  deactiveCreatePhongChieu,
+  setEmtyListPhongChieu,
+  setSelectedCumRap,
+} = phongChieuSlice.actions;
 
 export default phongChieuSlice.reducer;

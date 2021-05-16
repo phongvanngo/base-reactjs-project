@@ -2,7 +2,7 @@ import { filterArrayBySearchTerm } from "app/myLibrary/utilities";
 import { openPhongChieuFormDialog } from "app/redux/dialogSlice";
 import { deletePhongChieu } from "app/redux/phongChieuSlice";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MenuDropdown from "./PhongChieu.table.menu";
 import FilterTheaterSystem from "./PhongChieu.table.filterTheaterSystem";
 import FilterCumRap from "./PhongChieu.table.filterCumRap";
@@ -10,6 +10,10 @@ import FilterCumRap from "./PhongChieu.table.filterCumRap";
 export default function PhongChieuTable({ listPhongChieu }) {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
+
+  const isActiveCreatePhongChieu = useSelector(
+    (state) => state.phongChieu.isActiveCreatePhongChieu
+  );
 
   let currentListPhongChieu = filterArrayBySearchTerm(
     listPhongChieu,
@@ -50,7 +54,13 @@ export default function PhongChieuTable({ listPhongChieu }) {
               onClick={() => {
                 dispatch(openPhongChieuFormDialog({ id: null }));
               }}
-              className="flex items-center bg-admin_color_1 appearance-none  rounded-full w-100 h-full  py-2 px-8 text-admin_color_2 leading-tight hover:bg-indigo-900 focus:outline-none"
+              className={`focus:outline-none flex items-center bg-admin_color_1 appearance-none  rounded-full w-100 h-full  py-2 px-8 text-admin_color_2 leading-tight 
+                ${
+                  isActiveCreatePhongChieu
+                    ? " hover:bg-indigo-900 "
+                    : " opacity-20 "
+                }
+              `}
             >
               <i className="bx bx-plus mr-2 align-middle block"></i>
               <span>Thêm phòng chiếu mới</span>

@@ -25,7 +25,7 @@ const phongChieuApi = {
       response: {
         status: 200,
         data: {
-          listPhongChieu: listPhongChieu(cumRapId),
+          listPhongChieu: cumRapId ? listPhongChieu(cumRapId) : [],
         },
       },
       timeOut: 1000,
